@@ -24,6 +24,22 @@ Capstone II goals
 
 <!-- The data was pulled from the [The National UFO Reporting Center Online Database](http://www.nuforc.org/webreports.html).   -->
 
+Concepts and Codes:
+
+- BytesIO: reads bytes objects
+    - s3 object bodies come back as a byte string, BytesIO helps read that
+
+Images:
+
+- contains around 50,000 images and almost 700 different species
+
+Text Files:
+
+- image_class_labels.txt: contains all images and the folder number it is in
+- hierarchy.txt: contains the folder number and the class number(which kind of bird it is)
+- classes.txt: contains the class number and what type of bird that is
+
+- images.txt: comtains the image names without .jpg extension and the image file paths (starting with the folder names)
 
 Day 1:
 
@@ -43,6 +59,12 @@ Day 2:
 - AWS
 - figure out how to set up EC2 instance, connect an Elastic IP address, S3 bucket
 - s3 keeps crashing, need a new way to load in the numerous birds
+
+Day 3:
+
+- create dataframes with text files that contains information about the labels and the folders it corresponds to
+- figure out how to merge all as one for easy access
+- figure out how to use as labels
 
 ## Planned Process
 
