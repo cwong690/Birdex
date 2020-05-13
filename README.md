@@ -44,10 +44,23 @@ Day 2:
 - figure out how to set up EC2 instance, connect an Elastic IP address, S3 bucket
 - s3 keeps crashing, need a new way to load in the numerous birds
 
+## Planned Process
+
+- load into s3 (many images)
+- use small sets of images first
+- resize images (so model dont take too long)
+- align images with labels
+- get arrays
+- normalize (keras normalize or simply divide by 255)
+- make model
+    - Sequential()
+    - Flatten layer of inputs
+    - dense layers of hidden layers
+    - final dense layer: output
+
+
 
 ## Data Preparation and Exploratory Data Analysis
-
-### Data Preparation
 
 <!-- <details>
     <summary>summary</summary>
@@ -59,9 +72,7 @@ Day 2:
     <img alt="Data" src=''>
 </details>     -->
     
-<br>    
-
-### Exploratory Data Analysis
+<br> 
 
 
 <!-- <img alt="shapes" src='' style='width: 600px;'> -->
