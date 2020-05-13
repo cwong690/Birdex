@@ -1,4 +1,4 @@
-# bird-classification
+# Bird Classification
 
 Capstone II goals
 
@@ -8,13 +8,8 @@ Capstone II goals
 - In all cases, discussion of the cleaning and featurization pipeline and how raw data were transformed to the data trained on. Text processing especially requires discussion.
 - In the case of classification and class imbalance, discussion of how the class imbalance was addressed. Did you use a default decision threshold, or did you pick a different threshold through out-of-model knowledge (e.g. a cost-benefit matrix and a profit curve.)
 
-
-# Bird Classification
-
 ![badge](https://img.shields.io/badge/last%20modified-may%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
-
-<a href="https://github.com/cwong690">Cindy Wong</a>
 
 ## Table of Contents
 
