@@ -98,8 +98,10 @@ Day 3:
 - Transfer Learning
 - SHAP
 
-## MISTAKES
+## ISSUES/MISTAKES
 
+- birds are labeled by species but also by gender and juvenile/adult. They DO all looke quite different especially the colors between the females and males
+- A TON of labels (555 total), very sparse
 - tried drag and drop with s3
 - accidentally placed arguments in wrong spot and ran 50k images fail message
 
