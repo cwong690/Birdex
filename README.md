@@ -65,10 +65,14 @@ Day 3:
 - create dataframes with text files that contains information about the labels and the folders it corresponds to
 - figure out how to merge all as one for easy access
 - figure out how to use as labels
+- create dataframes of image information
+- test small set of loading in images and displaying
+    - saved as array
+- upload all images to s3
 
 ## Planned Process
 
-- load into s3 (many images)
+- load into s3 (many images) DONE
 - use small sets of images first
 - resize images (so model dont take too long)
 - align images with labels
@@ -79,6 +83,20 @@ Day 3:
     - Flatten layer of inputs
     - dense layers of hidden layers
     - final dense layer: output
+    
+1. Baseline Model
+- Decision Tree
+- Random Forest
+
+2. Deep Learning
+- Neural Network
+- MAYBE CNN?
+
+3. IF TIME ALLOWS:
+- KNN
+- TensorBoard
+- Transfer Learning
+- SHAP
 
 
 
