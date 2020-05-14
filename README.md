@@ -98,7 +98,10 @@ Day 3:
 - Transfer Learning
 - SHAP
 
+## MISTAKES
 
+- tried drag and drop with s3
+- accidentally placed arguments in wrong spot and ran 50k images fail message
 
 ## Data Preparation and Exploratory Data Analysis
 
