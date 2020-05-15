@@ -16,17 +16,10 @@ Capstone II goals
 ## Table of Contents
 
 - [Overview](#basic-overview)
-  - [Context](#context)
   - [Goal](#goal)
 - [Exploring Data](#exploring-data)
-  - [Web Scraping](#web-scraping)
-  - [Initial Intake](#initial-intake)
-- [Language Processing](#language-processing)
-  - [Tokenizing](#tokenizing)
+- [](#)
   - [Visualizations](#visualizations)
-- [**K O D A K  B O T  3 0 0 0**](#k-o-d-a-k--b-o-t--3-0-0-0)
-- [Future Considerations](#future-considerations)
-- [License](#license)
 
 - <a href="https://github.com/cwong690/bird-classifcation">Introduction</a> 
 - <a href="https://github.com/cwong690/bird-classifcation">Data Preparation</a> 
