@@ -2,11 +2,6 @@
 
 # Duck, Duck, HAWK
 
-Capstone II goals
-
-- In all cases, discussion of the cleaning and featurization pipeline and how raw data were transformed to the data trained on. Text processing especially requires discussion.
-- In the case of classification and class imbalance, discussion of how the class imbalance was addressed. Did you use a default decision threshold, or did you pick a different threshold through out-of-model knowledge (e.g. a cost-benefit matrix and a profit curve.)
-
 ![badge](https://img.shields.io/badge/last%20modified-may%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
 
@@ -20,17 +15,12 @@ Capstone II goals
 - [Issues Notes](#issues-notes)
 - [Future Work](#future-work)
 
-
-
-blargb;arg;abf
-
-
-
-
 ## Overview
 
 The data was pulled from the [The Cornell Lab of Ornithology](https://www.birds.cornell.edu/home).  
 It is a collection of about 48,000 images and more than 400 species of birds observed in North America. Birds are separated by male, female or juvenile since they look quite different. Text files are also included that contains image file names and their corresponding labels.
+
+![Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
 
 
 ## Data Preparation
@@ -102,10 +92,12 @@ code
 The one of the first models tested was on a small subset (~3,000) of the total images(~40,000). This is mainly to test that the inputs of features and labels are correct. Errors did occur the very first run.
 
 Shape of training sets and testing sets.
-<img alt="data shapes" src='graphs/data_shapes.png'>
+
+    <img alt="data shapes" src='graphs/data_shapes.png'>
     
 This returned some pretty disturbing metrics which is was the turning point for the project goal.
-<img alt="data shapes" src='graphs/data_shapes.png'>
+    
+    <img alt="data shapes" src='graphs/data_shapes.png'>
 
 
 ## Metric Visualizations
