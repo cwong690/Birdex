@@ -1,4 +1,4 @@
-![All About Dat Bird](image)
+![All About Dat Bird](bird-classification/graphs/bird_collage.png)
 
 # Bird Classification
 
@@ -129,15 +129,7 @@ The very first model trained on a small subset in order to keep runtime small du
 
 <img alt="" src=''>
 
-
-
-## Summary
-
-
-
-
-
-## Encountered Issues
+## Issues Notes
 
 - birds are labeled by species but also by gender and juvenile/adult. They DO all looke quite different especially the colors between the females and males
 - A TON of labels (555 total), very sparse
@@ -154,6 +146,7 @@ The very first model trained on a small subset in order to keep runtime small du
 ## Future Work
 
 - KNN
+- More birds
 - Better Model
 - TensorBoard
 - Transfer Learning
