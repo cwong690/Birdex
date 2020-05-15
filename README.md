@@ -106,7 +106,6 @@ This is what the CNN code looks like generally:
 Model 1 contained 3 convolution layers and 2 dense layers.
 
 <details>
-    
     <summary>Model 1 Summary</summary>
     <img alt="Modelx 1 summary" src='graphs/dhf_model1_overfit_summary.png'>
 
