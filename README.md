@@ -69,6 +69,7 @@ Day 3:
 - test small set of loading in images and displaying
     - saved as array
 - upload all images to s3
+- model was awful, figured out one hot encoded the wrong numbers due to the fact that some numbers are missing and not in a perfect range
 
 ## Planned Process
 
