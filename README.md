@@ -26,7 +26,7 @@ So why is bird conservation import? Check out this post by the American Bird Con
 
 Also, they're basically modern dinosaurs.
 
-<img alt="birdfam" src='graphs/bird-fam-tree.png'>
+<img alt="birdfam" src='graphs/bird-fam-tree.png' style='width: 600px;'>
 
 [Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
 
@@ -70,7 +70,8 @@ def resize_images_array(img_dir, folders, bucket):
     return np.array(img_arrays), np.array(labels)
 
 ```
-
+</details>
+    
 ## Birds
 
 The images have 3 different channels for the color which makes up the colors in the main image.
