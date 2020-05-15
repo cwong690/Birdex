@@ -89,21 +89,78 @@ def resize_images_array(img_dir, folders, bucket):
 
 ## Birds
 
+The images have 3 different channels for the color which makes up the colors in the main image.
+The shape of the images are **(200,200,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
 
-<img alt="shapes" src='' style='width: 600px;'>
+Here are the RBG Channels of the three classes of birds seen in this dataset:
+
+<img alt="RBG images" src='bird-classification/graphs/dhf_RBGplot.png' style='width: 600px;'>
 
 
 ## Convolutional Neural Network
 
 The one of the first models tested was on a small subset (~3,000) of the total images(~40,000). This is mainly to test that the inputs of features and labels are correct. Errors did occur the very first run.
 
-Shape of training sets and testing sets.
-
-<img alt="data shapes" src='graphs/data_shapes.png'>
+<details>
+    <summary>Shape of training sets and testing sets.</summary>
+    <img alt="data shapes" src='graphs/data_shapes.png'>
+</details>   
     
 This returned some pretty disturbing metrics which is was the turning point for the project goal.
+
+<img alt="weak model metrics" src='graphs/model1_bad.png'>
+
+This is what the CNN code looks like generally:
+<details>
+    <summary>CNN Code</summary>
+    <img alt="CNN Code" src='graphs/first_conv_code.png'>
+</details>
     
-<img alt="data shapes" src='graphs/data_shapes.png'>
+### Model 1
+
+Model 1 contained 3 convolution layers and 2 dense layers.
+
+<details>
+    
+    <summary>Model 1 Summary</summary>
+    <img alt="Modelx 1 summary" src='graphs/dhf_model1_overfit_summary.png'>
+    
+    <summary>Model 1 Epochs</summary>
+    <img alt="Modelx 1 epochs" src='graphs/dhf_model1_overfit.png'>
+    
+    <summary>Model 1 Accuracy and Loss Plot</summary>
+    <img alt="Modelx 1 acc/loss plots" src='graphs/modelx1_acc_loss_overfit.png'>
+    
+    <summary>Model 1 Confusion Matrix</summary>
+    <img alt="Modelx 1 conf_mat" src='graphs/modelx_1_conf_mat.png'>
+</details>
+
+### Model 2
+
+Model 2 contained 3 convolution layers and 2 dense layers.
+
+<details>
+    <summary>Model 2 Accuracy and Loss Plot</summary>
+    <img alt="Modelx 2 acc/loss plots" src='graphs/modelx2_acc_loss_overfit.png'>
+    
+    <summary>Model 2 Confusion Matrix</summary>
+    <img alt="Modelx 2 conf_mat" src='graphs/modelx_2_conf_mat.png'>
+</details> 
+
+### Model 3
+
+Model 3 contained 3 convolution layers and 2 dense layers.
+
+<details>
+    <summary>Model 2 Epochs</summary>
+    <img alt="Modelx 2 epochs" src='graphs/dhf_model1_overfit.png'>
+    
+    <summary>Model 2 Accuracy and Loss Plot</summary>
+    <img alt="Modelx 2 acc/loss plots" src='graphs/modelx2_acc_loss_overfit.png'>
+    
+    <summary>Model 2 Confusion Matrix</summary>
+    <img alt="Modelx 2 conf_mat" src='graphs/modelx_2_conf_mat.png'>
+</details> 
 
 
 ## Issues Notes
