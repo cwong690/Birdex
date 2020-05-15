@@ -26,8 +26,9 @@ So why is bird conservation import? Check out this post by the American Bird Con
 
 Also, they're basically modern dinosaurs.
 
-<img alt="birdfam" src='graphs/bird-fam-tree.png' style='width: 600px;'>
+<img alt="birdfam" src='graphs/bird-fam-tree.png' style='width: 500px;'>
 
+This Berkeley articles on why birds are dinosaurs (but also shows the skeptical side):
 [Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
 
 
@@ -72,10 +73,26 @@ def resize_images_array(img_dir, folders, bucket):
 ```
 </details>
     
+After loading in all the images, we get:
+
+<img alt="bird numbers" src='graphs/nums_of_birds.png'>
+
 ## Birds
 
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(200,200,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
+
+Duck Contestant 1  
+
+<img alt="Duck" src='graphs/duck1.png' style='width: 600px;'>
+
+Finch Contestant 2  
+
+<img alt="Finch" src='graphs/finch1.png' style='width: 600px;'>
+
+Hawk Contestant 3  
+
+<img alt="Hawk" src='graphs/hawk1.png' style='width: 600px;'>
 
 Here are the RBG Channels of the three classes of birds seen in this dataset:
 
@@ -108,11 +125,20 @@ Model 1 contained 3 convolution layers and 2 dense layers.
 <details>
     <summary>Model 1 Summary</summary>
     <img alt="Modelx 1 summary" src='graphs/dhf_model1_overfit_summary.png'>
+</details>
 
+<details>
+    <summary>Model 1 Epochs</summary>
     <img alt="Modelx 1 epochs" src='graphs/dhf_model1_overfit.png'>
-    
+</details>
+
+<details>
+    <summary>Model 1 Accuracy/Loss Plots</summary>
     <img alt="Modelx 1 acc/loss plots" src='graphs/modelx1_acc_loss_overfit.png'>
-    
+</details>
+
+<details>
+    <summary>Model 1 Confusion Matrix</summary>
     <img alt="Modelx 1 conf_mat" src='graphs/modelx_1_conf_mat.png'>
 </details>
 
@@ -121,26 +147,32 @@ Model 1 contained 3 convolution layers and 2 dense layers.
 Model 2 contained 3 convolution layers and 2 dense layers.
 
 <details>
-    <summary>Model 2 Accuracy and Loss Plot</summary>
+    <summary>Model 2 Accuracy/Loss Plots</summary>
     <img alt="Modelx 2 acc/loss plots" src='graphs/modelx2_acc_loss_overfit.png'>
-    
+</details>
+
+<details>
     <summary>Model 2 Confusion Matrix</summary>
     <img alt="Modelx 2 conf_mat" src='graphs/modelx_2_conf_mat.png'>
 </details> 
 
-### Model 3
+### Model 7
 
-Model 3 contained 3 convolution layers and 2 dense layers.
+Model 7 contained 2 convolution layers but without Dropout layers and 2 dense layers.
 
 <details>
-    <summary>Model 2 Epochs</summary>
-    <img alt="Modelx 2 epochs" src='graphs/dhf_model1_overfit.png'>
-    
-    <summary>Model 2 Accuracy and Loss Plot</summary>
-    <img alt="Modelx 2 acc/loss plots" src='graphs/modelx2_acc_loss_overfit.png'>
-    
-    <summary>Model 2 Confusion Matrix</summary>
-    <img alt="Modelx 2 conf_mat" src='graphs/modelx_2_conf_mat.png'>
+    <summary>Model 7 Epochs</summary>
+    <img alt="Modelx 7 epochs" src='graphs/modelx7_epochs.png'>
+</details>
+
+<details>
+    <summary>Model 7 Accuracy/Loss Plots</summary>
+    <img alt="Modelx 7 acc/loss plots" src='graphs/modelx7_acc_loss_overfit.png'>
+</details>
+
+<details>
+    <summary>Model 7 Confusion Matrix</summary>
+    <img alt="Modelx 7 conf_mat" src='graphs/modelx_7_conf_mat.png'>
 </details> 
 
 
@@ -166,3 +198,4 @@ Model 3 contained 3 convolution layers and 2 dense layers.
 - TensorBoard
 - Transfer Learning
 - SHAP
+- Clean up files
