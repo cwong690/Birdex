@@ -1,3 +1,5 @@
+![HITMAKA HEADER](image)
+
 # Bird Classification
 
 Capstone II goals
@@ -13,6 +15,19 @@ Capstone II goals
 
 ## Table of Contents
 
+- [Overview](#basic-overview)
+  - [Context](#context)
+  - [Goal](#goal)
+- [Exploring Data](#exploring-data)
+  - [Web Scraping](#web-scraping)
+  - [Initial Intake](#initial-intake)
+- [Language Processing](#language-processing)
+  - [Tokenizing](#tokenizing)
+  - [Visualizations](#visualizations)
+- [**K O D A K  B O T  3 0 0 0**](#k-o-d-a-k--b-o-t--3-0-0-0)
+- [Future Considerations](#future-considerations)
+- [License](#license)
+
 - <a href="https://github.com/cwong690/bird-classifcation">Introduction</a> 
 - <a href="https://github.com/cwong690/bird-classifcation">Data Preparation</a> 
 
@@ -20,7 +35,7 @@ Capstone II goals
 - <a href="https://github.com/cwong690/bird-classifcation">Summary and Key Findings</a>
 
 
-## Introduction
+## Overview
 
 <!-- The data was pulled from the [The National UFO Reporting Center Online Database](http://www.nuforc.org/webreports.html).   -->
 
@@ -69,7 +84,7 @@ Day 3:
 - test small set of loading in images and displaying
     - saved as array
 - upload all images to s3
-- model was awful, figured out one hot encoded the wrong numbers due to the fact that some numbers are missing and not in a perfect range
+
 
 ## Planned Process
 
@@ -86,18 +101,11 @@ Day 3:
     - final dense layer: output
     
 1. Baseline Model
-- Decision Tree
 - Random Forest
 
 2. Deep Learning
 - Neural Network
-- MAYBE CNN?
-
-3. IF TIME ALLOWS:
-- KNN
-- TensorBoard
-- Transfer Learning
-- SHAP
+- CNN
 
 ## ISSUES/MISTAKES
 
@@ -105,6 +113,12 @@ Day 3:
 - A TON of labels (555 total), very sparse
 - tried drag and drop with s3
 - accidentally placed arguments in wrong spot and ran 50k images fail message
+- another reason for hot garbage: birds dont have the same amount of images, some have 20 something, some has 120
+    - checked inputs, y labels and x labels
+    - checked images folders, different amounts of bird images
+    - checked slicing and what images i am getting, turns out i could be slicing where each bird only has one image
+        - fix by grabbing sequentially because all the birds in one folder are next to each other in dataframe
+- model was awful, figured out one hot encoded the wrong numbers due to the fact that some numbers are missing and not in a perfect range
 
 ## Data Preparation and Exploratory Data Analysis
 
@@ -120,16 +134,27 @@ Day 3:
     
 <br> 
 
+<!-- wesley's op drop down -->
+<details>
+  <summary>
+    <b> Model Comparison Code </b>  
+  </summary>
+  
+```python
+code
+
+```
+  
+
+</details>
+
+
 
 <!-- <img alt="shapes" src='' style='width: 600px;'> -->
 
 
-## Neural Network
+## Convolutional Neural Network
 
-
-
-
-## KNN
 <!-- 
 <img alt="" src=''>
 
@@ -139,3 +164,11 @@ Day 3:
 
 
 <!-- <img alt="" src=''> -->
+
+## Future Work
+
+- KNN
+- Better Model
+- TensorBoard
+- Transfer Learning
+- SHAP
