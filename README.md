@@ -1,4 +1,4 @@
-![Duck, Duck, HAWK](bird-classification/graphs/bird_collage.png)
+![Duck, Duck, HAWK](graphs/bird_collage.png)
 
 # Duck, Duck, HAWK
 
