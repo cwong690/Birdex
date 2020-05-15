@@ -36,16 +36,35 @@ A function is written to retrieve the images from the S3 bucket while also resiz
   </summary>
   
 ```python
-code
+
+def resize_images_array(img_dir, folders, bucket):
+    # arrays of image pixels
+    img_arrays = []
+    labels = []
+    
+    # loop through the dataframe that is linked to its label so that all images are in the same order
+    for folder in tqdm(folders):
+        s3 = boto3.client('s3')
+        enter_folder = s3.list_objects_v2(Bucket=bucket, Prefix=f'{img_dir}/{folder}')
+        for i in enter_folder['Contents'][2:]:
+            try:
+                filepath = i['Key']
+                obj = s3.get_object(Bucket=bucket, Key=f'{filepath}')
+                img_bytes = BytesIO(obj['Body'].read())
+                open_img = Image.open(img_bytes)
+                arr = np.array(open_img.resize((200,200))) # resize to 200,200. possible to play around with better or worse resolution
+                img_arrays.append(arr)
+                labels.append(folder)
+            except:
+                print(filepath) # get file_path of ones that fail to load
+                continue
+
+    return np.array(img_arrays), np.array(labels)
 
 ```
+</details>
 
 
-- load into s3 (many images) DONE
-- use small sets of images first
-- resize images (so model dont take too long)
-- align images with labels
-- get arrays
 - normalize (keras normalize or simply divide by 255)
 - make model
     - Sequential()
@@ -65,19 +84,6 @@ code
     
 <br> 
 
-<!-- wesley's op drop down -->
-<details>
-  <summary>
-    <b> Model Comparison Code </b>  
-  </summary>
-  
-```python
-code
-
-```
-  
-
-</details>
 
 <img alt="shapes" src='' style='width: 600px;'>
 
@@ -93,16 +99,12 @@ The one of the first models tested was on a small subset (~3,000) of the total i
 
 Shape of training sets and testing sets.
 
-    <img alt="data shapes" src='graphs/data_shapes.png'>
+<img alt="data shapes" src='graphs/data_shapes.png'>
     
 This returned some pretty disturbing metrics which is was the turning point for the project goal.
     
-    <img alt="data shapes" src='graphs/data_shapes.png'>
+<img alt="data shapes" src='graphs/data_shapes.png'>
 
-
-## Metric Visualizations
-
-<img alt="" src=''>
 
 ## Issues Notes
 
