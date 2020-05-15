@@ -1,10 +1,9 @@
-![All About Dat Bird](bird-classification/graphs/bird_collage.png)
+![Duck, Duck, HAWK](bird-classification/graphs/bird_collage.png)
 
-# Bird Classification
+# Duck, Duck, HAWK
 
 Capstone II goals
 
-- In the case of supervised learning, picking an appropriate metric to quantify performance, and then use of that metric in cross-validation to arrive at a model that generalizes as well as possible on unseen data. Be prepared for the request: "Describe the process you used to ensure your model was properly fit."
 - In all cases, discussion of the cleaning and featurization pipeline and how raw data were transformed to the data trained on. Text processing especially requires discussion.
 - In the case of classification and class imbalance, discussion of how the class imbalance was addressed. Did you use a default decision threshold, or did you pick a different threshold through out-of-model knowledge (e.g. a cost-benefit matrix and a profit curve.)
 
@@ -17,9 +16,8 @@ Capstone II goals
 - [Data Preparation](#data-preparation)
 - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
-- [Metric Visualizations](#metric-visualizations)
 - [Summary](#summary)
-- [Encountered Issues](#encountered-issues)
+- [Issues Notes](#issues-notes)
 - [Future Work](#future-work)
 
 
@@ -30,6 +28,22 @@ It is a collection of about 48,000 images and more than 400 species of birds obs
 
 
 ## Data Preparation
+
+Since there are many images, Amazon S3 came into play. The images are loaded into a bucket and stored in separated folders of the bird species.
+While the original goal is to classify around 555 species of birds with more than 40,000 images, as it will be shown later, it was not possible for now. The pivoted project goal is to identify 3 different types of birds: **ducks, finches, and hawks**.
+
+A function is written to retrieve the images from the S3 bucket while also resizing them, convert to array, and append to a list. This is due to the need for the input of the neural network to be numpy arrays.
+
+<details>
+  <summary>
+    <b> Load and Resize Image Code </b>  
+  </summary>
+  
+```python
+code
+
+```
+
 
 - load into s3 (many images) DONE
 - use small sets of images first
@@ -69,20 +83,24 @@ code
 
 </details>
 
+<img alt="shapes" src='' style='width: 600px;'>
+
 ## Birds
 
 
-<!-- <img alt="shapes" src='' style='width: 600px;'> -->
+<img alt="shapes" src='' style='width: 600px;'>
 
 
 ## Convolutional Neural Network
 
+The one of the first models tested was on a small subset (~3,000) of the total images(~40,000). This is mainly to test that the inputs of features and labels are correct. Errors did occur the very first run.
+
 Shape of training sets and testing sets.
 <img alt="data shapes" src='graphs/data_shapes.png'>
+    
+This returned some pretty disturbing metrics which is was the turning point for the project goal.
+<img alt="data shapes" src='graphs/data_shapes.png'>
 
-
-The very first model trained on a small subset in order to keep runtime small during troubleshooting.
-<img alt="initial model" src='model_0_3000'>
 
 ## Metric Visualizations
 
