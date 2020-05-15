@@ -16,10 +16,11 @@ Capstone II goals
 - [Overview](#overview)
 - [Data Preparation](#data-preparation)
 - [Birds](#birds)
-
-
-- <a href="https://github.com/cwong690/bird-classifcation">Neural Network</a> 
-- <a href="https://github.com/cwong690/bird-classifcation">Summary and Key Findings</a>
+- [Convolutional Neural Network](#convolutional-neural-network)
+- [Metric Visualizations](#metric-visualizations)
+- [Summary](#summary)
+- [Encountered Issues](#encountered-issues)
+- [Future Work](#future-work)
 
 
 ## Overview
@@ -117,17 +118,26 @@ code
 
 ## Convolutional Neural Network
 
-<!-- 
+Shape of training sets and testing sets.
+<img alt="data shapes" src='graphs/data_shapes.png'>
+
+
+The very first model trained on a small subset in order to keep runtime small during troubleshooting.
+<img alt="initial model" src='model_0_3000'>
+
+## Metric Visualizations
+
 <img alt="" src=''>
 
-<img alt="" src=''> -->
-
-## Summary and Key Findings
 
 
-<!-- <img alt="" src=''> -->
+## Summary
 
-## ISSUES/MISTAKES
+
+
+
+
+## Encountered Issues
 
 - birds are labeled by species but also by gender and juvenile/adult. They DO all looke quite different especially the colors between the females and males
 - A TON of labels (555 total), very sparse
