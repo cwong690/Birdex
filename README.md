@@ -20,7 +20,15 @@
 The data was pulled from the [The Cornell Lab of Ornithology](https://www.birds.cornell.edu/home).  
 It is a collection of about 48,000 images and more than 400 species of birds observed in North America. Birds are separated by male, female or juvenile since they look quite different. Text files are also included that contains image file names and their corresponding labels.
 
-![Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
+So why is bird conservation import? Check out this post by the American Bird Conservancy:
+
+[Why Bird Conservation is Important](https://abcbirds.org/about/mission-and-strategy/why-conserve-birds/)
+
+Also, they're basically modern dinosaurs.
+
+<img alt="birdfam" src='graphs/bird-fam-tree.png'>
+
+[Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
 
 
 ## Data Preparation
@@ -62,30 +70,6 @@ def resize_images_array(img_dir, folders, bucket):
     return np.array(img_arrays), np.array(labels)
 
 ```
-</details>
-
-
-- normalize (keras normalize or simply divide by 255)
-- make model
-    - Sequential()
-    - Flatten layer of inputs
-    - dense layers of hidden layers
-    - final dense layer: output
-
-<details>
-    <summary>summary</summary>
-    <img alt="Data" src=''>
-</details>
-    
-<details>
-    <summary>summary</summary>
-    <img alt="Data" src=''>
-</details>    
-    
-<br> 
-
-
-<img alt="shapes" src='' style='width: 600px;'>
 
 ## Birds
 
@@ -94,7 +78,7 @@ The shape of the images are **(200,200,3)**, the third one represent the number 
 
 Here are the RBG Channels of the three classes of birds seen in this dataset:
 
-<img alt="RBG images" src='bird-classification/graphs/dhf_RBGplot.png' style='width: 600px;'>
+<img alt="RBG images" src='graphs/dhf_RBGplot.png' style='width: 600px;'>
 
 
 ## Convolutional Neural Network
@@ -124,14 +108,11 @@ Model 1 contained 3 convolution layers and 2 dense layers.
     
     <summary>Model 1 Summary</summary>
     <img alt="Modelx 1 summary" src='graphs/dhf_model1_overfit_summary.png'>
-    
-    <summary>Model 1 Epochs</summary>
+
     <img alt="Modelx 1 epochs" src='graphs/dhf_model1_overfit.png'>
     
-    <summary>Model 1 Accuracy and Loss Plot</summary>
     <img alt="Modelx 1 acc/loss plots" src='graphs/modelx1_acc_loss_overfit.png'>
     
-    <summary>Model 1 Confusion Matrix</summary>
     <img alt="Modelx 1 conf_mat" src='graphs/modelx_1_conf_mat.png'>
 </details>
 
