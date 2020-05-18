@@ -1,7 +1,7 @@
 <!-- ![Duck, Duck, HAWK](graphs/bird_collage.png) -->
 <img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
 
-#                        Duck, Duck, HAWK
+# Duck, Duck, HAWK
 
 ![badge](https://img.shields.io/badge/last%20modified-may%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
@@ -10,7 +10,7 @@
 
 - [Overview](#overview)
 - [Data Preparation](#data-preparation)
-- [Birds](#birds)
+    - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
 - [Summary](#summary)
 - [Issues Notes](#issues-notes)
@@ -78,7 +78,7 @@ After loading in all the images, we get:
 
 <img alt="bird numbers" src='graphs/nums_of_birds.png'>
 
-## Birds
+### Birds
 
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(200,200,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
