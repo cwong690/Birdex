@@ -1,5 +1,6 @@
 ![Duck, Duck, HAWK](graphs/bird_collage.png)
-<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height='300px' width='600px'>
+<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height='300' width='600' align='center'>
+<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' style='max-width:100%' align='center'>
 
 # Duck, Duck, HAWK
 
@@ -174,10 +175,8 @@ Model 7 contained 2 convolution layers but without Dropout layers and 2 dense la
 ## Issues Notes
 
 - birds are labeled by species but also by gender and juvenile/adult. They DO all looke quite different especially the colors between the females and males
-- A TON of labels (555 total), very sparse
-- tried drag and drop with s3
-- accidentally placed arguments in wrong spot and ran 50k images fail message
-- another reason for hot garbage: birds dont have the same amount of images, some have 20 something, some has 120
+- another reason for poor model: birds dont have the same amount of images, some have 20 something, some has 120
+    - A TON of labels (555 total), very sparse, along with unbalanced amounts of bird images
     - checked inputs, y labels and x labels
     - checked images folders, different amounts of bird images
     - checked slicing and what images i am getting, turns out i could be slicing where each bird only has one image
@@ -187,10 +186,10 @@ Model 7 contained 2 convolution layers but without Dropout layers and 2 dense la
 
 ## Future Work
 
-- KNN
-- More birds
-- Better Model
-- TensorBoard
-- Transfer Learning
-- SHAP
-- Clean up files
+- [] KNN
+- [] More birds
+- [] Better Model
+- [] TensorBoard
+- [] Transfer Learning
+- [] SHAP
+- [] Clean up files
