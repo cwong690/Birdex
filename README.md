@@ -82,9 +82,11 @@ After loading in all the images, we get:
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(200,200,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
 
-Duck Contestant 1  
+Contestant 1: Duck   
 
-<img alt="Duck" src='graphs/duck1.png' style='width: 600px;'>
+<img alt="Duck" src='graphs/duck1.png' style=''> 
+
+![Contestant 1: Duck](graphs/duck1.png "Contestant 1: Duck ") ![Contestant 2: Finch](graphs/finch1.png "Contestant 2: Finch") ![Contestant 3: Hawk](graphs/hawk1.png "Contestant 3: Hawk")
 
 Finch Contestant 2  
 
@@ -92,11 +94,11 @@ Finch Contestant 2
 
 Hawk Contestant 3  
 
-<img alt="Hawk" src='graphs/hawk1.png' style='width: 600px;'>
+<img alt="Hawk" src='graphs/hawk1.png' style='width: 600px; height: 300px;'>
 
-Here are the RBG Channels of the three classes of birds seen in this dataset:
+Here are the RGB Channels of the three classes of birds seen in this dataset:
 
-<img alt="RBG images" src='graphs/dhf_RBGplot.png' style='width: 600px;'>
+<img alt="RGB images" src='graphs/dhf_RGBplot.png' style='width: 600px;'>
 
 
 ## Convolutional Neural Network
