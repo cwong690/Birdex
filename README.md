@@ -84,7 +84,7 @@ The shape of the images are **(200,200,3)**, the third one represent the number 
 
 Contestant 1: Duck   
 
-<img alt="Duck" src='graphs/duck1.png' style=''> 
+<img alt="Duck" src='graphs/duck1.png' height='200px' width='200px'> <img alt="Finch" src='graphs/finch1.png' height='200px' width='200px'> <img alt="Hawk" src='graphs/hawk1.png' height='200px' width='200px'>
 
 ![Contestant 1: Duck](graphs/duck1.png "Contestant 1: Duck ") ![Contestant 2: Finch](graphs/finch1.png "Contestant 2: Finch") ![Contestant 3: Hawk](graphs/hawk1.png "Contestant 3: Hawk")
 
