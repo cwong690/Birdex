@@ -1,5 +1,5 @@
-![Duck, Duck, HAWK](graphs/bird_collage.png)
-<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height="400px" width="800px" align='right'>
+<!-- ![Duck, Duck, HAWK](graphs/bird_collage.png) -->
+<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height="500px" width="800px" align='center'>
 
 # Duck, Duck, HAWK
 
