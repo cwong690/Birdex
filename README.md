@@ -1,5 +1,5 @@
 ![Duck, Duck, HAWK](graphs/bird_collage.png)
-<img alt="birdfam" src='graphs/bird-fam-tree.png' height="400px" width="700px" align='center'>
+<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height="400px" width="800px" align='right'>
 
 # Duck, Duck, HAWK
 
