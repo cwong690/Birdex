@@ -1,6 +1,4 @@
-![Duck, Duck, HAWK](graphs/bird_collage.png)
-<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height='300' width='600' align='center'>
-<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' style='max-width:100%' align='center'>
+![Duck, Duck, HAWK](graphs/bird_collage.png{:height="400px" width="700px")
 
 # Duck, Duck, HAWK
 
@@ -186,10 +184,10 @@ Model 7 contained 2 convolution layers but without Dropout layers and 2 dense la
 
 ## Future Work
 
-- [] KNN
-- [] More birds
-- [] Better Model
-- [] TensorBoard
-- [] Transfer Learning
-- [] SHAP
-- [] Clean up files
+- [ ] KNN
+- [ ] More birds
+- [ ] Better Model
+- [ ] TensorBoard
+- [ ] Transfer Learning
+- [ ] SHAP
+- [ ] Clean up files
