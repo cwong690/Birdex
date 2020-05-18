@@ -1,4 +1,4 @@
-![Duck, Duck, HAWK](graphs/bird_collage.png)
+![Duck, Duck, HAWK](graphs/bird_collage.png height='500px' width='800px')
 
 # Duck, Duck, HAWK
 
@@ -81,12 +81,6 @@ After loading in all the images, we get:
 
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(200,200,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
-
-Contestant 1: Duck   
-
-<img alt="Duck" src='graphs/duck1.png' height='200px' width='300px'> <img alt="Finch" src='graphs/finch1.png' height='200px' width='300px'> <img alt="Hawk" src='graphs/hawk1.png' height='200px' width='300px'>
-
-![Contestant 1: Duck](graphs/duck1.png "Contestant 1: Duck ") ![Contestant 2: Finch](graphs/finch1.png "Contestant 2: Finch") ![Contestant 3: Hawk](graphs/hawk1.png "Contestant 3: Hawk")
 
 Contestant 1: Duck         |  Contestant 2: Finch      |     Contestant 3: Hawk
 :-------------------------:|:-------------------------:|:-------------------------:
