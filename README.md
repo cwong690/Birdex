@@ -1,7 +1,7 @@
 <!-- ![Duck, Duck, HAWK](graphs/bird_collage.png) -->
 <img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
 
-# Duck, Duck, HAWK
+#                        Duck, Duck, HAWK
 
 ![badge](https://img.shields.io/badge/last%20modified-may%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
