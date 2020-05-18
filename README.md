@@ -1,4 +1,5 @@
-![Duck, Duck, HAWK](graphs/bird_collage.png){:height="400px" width="700px"}
+![Duck, Duck, HAWK](graphs/bird_collage.png)
+<img alt="birdfam" src='graphs/bird-fam-tree.png' height="400px" width="700px" align='center'>
 
 # Duck, Duck, HAWK
 
