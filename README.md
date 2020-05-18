@@ -27,7 +27,7 @@ So why is bird conservation import? Check out this post by the American Bird Con
 
 Also, they're basically modern dinosaurs.
 
-<img alt="birdfam" src='graphs/bird-fam-tree.png' height='300px' width='500px' align='right'>
+<img alt="birdfam" src='graphs/bird-fam-tree.png' height='400px' width='500px' align='right'>
 
 This Berkeley articles on why birds are dinosaurs (but also shows the skeptical side):
 [Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
