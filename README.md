@@ -1,4 +1,5 @@
-![Duck, Duck, HAWK](graphs/bird_collage.png height='500px' width='800px')
+![Duck, Duck, HAWK](graphs/bird_collage.png)
+<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height='300px' width='600px'>
 
 # Duck, Duck, HAWK
 
@@ -26,7 +27,7 @@ So why is bird conservation import? Check out this post by the American Bird Con
 
 Also, they're basically modern dinosaurs.
 
-<img alt="birdfam" src='graphs/bird-fam-tree.png' style='width: 700px;'>
+<img alt="birdfam" src='graphs/bird-fam-tree.png' height='300px' width='500px'>
 
 This Berkeley articles on why birds are dinosaurs (but also shows the skeptical side):
 [Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
@@ -86,7 +87,9 @@ Contestant 1: Duck         |  Contestant 2: Finch      |     Contestant 3: Hawk
 :-------------------------:|:-------------------------:|:-------------------------:
 ![](graphs/duck1.png)     |   ![](graphs/finch1.png)  |    ![](graphs/hawk1.png)
 
+  
 Here are the RGB Channels of the three classes of birds seen in this dataset:
+
 
 <img alt="RGB images" src='graphs/dhf_RGBplot.png' style='width: 600px;'>
 
