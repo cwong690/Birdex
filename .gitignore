@@ -6,4 +6,4 @@ backup.h5
 logs/
 *.json
 .DS_Store
-
+__pycache__/
