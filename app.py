@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, jsonify 
+from flask import Flask, flash, render_template, request, redirect, jsonify, url_for
 import pickle
 import numpy as np
 
-from predict import predict
-from test_script import test_script
+# from predict import predict
+# from test_script import test_script
 
 from pymongo import MongoClient
 
@@ -12,36 +12,42 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # Render home page
-@app.route('/',methods=['GET'])
+@app.route('/',methods=['GET', 'POST'])
 def home():
 
-    # connect to database
-    client = MongoClient('localhost', 27017)
-    db = client['frauds']
-    table = db['new_events12']
+    # # connect to database
+    # client = MongoClient('localhost', 27017)
+    # db = client['frauds']
+    # table = db['new_events12']
     
-    events = table.find().sort([('sequence', -1)]).sort([('fraud_probability', -1)]).limit(50)
-    legend = 'Risk Level'
-    entries = table.find().sort([('sequence', -1)]).sort([('fraud_probability', -1)]).limit(1000)
-    unable, low, medium, high= 0, 0, 0, 0
-    for each_ in entries:
-        if each_['risk_factor'] == 'Unable to Predict':
-            unable += 1
-        elif each_['risk_factor'] == 'low':
-            low += 1
-        elif each_['risk_factor'] == 'medium':
-            medium += 1
+    if request.method == 'GET':
+        # show the upload form
+        return render_template('home.html')
+
+    if request.method == 'POST':
+        # TODO: Logic to process uploaded images
+
+        passed = True # for now
+        if passed:
+            return redirect(url_for('predict', filename='test.png'))
         else:
-            high += 1
-    labels = ['unable','low', 'medium', 'high']
+            return redirect(url_for('error'))
 
-    # render the template and pass the events
-    return render_template('home.html', data=events, unable=unable, low=low, medium=medium, high=high, labels=labels, legend=legend)
+@app.route('/predict/<filename>', methods=['GET'])
+def predict(filename):
+    # TODO: Logic to load the uploaded image filename and predict the
+    # labels
 
-# Execute logic of prediction
-@app.route('/score', methods=['POST'])
-def score():
-    pass
+    return render_template('predict.html')
+
+
+@app.errorhandler(500)
+def server_error(error):
+    return render_template('error.html'), 500
+
+
+
+
 
 
 
