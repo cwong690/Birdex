@@ -10,6 +10,7 @@ from pymongo import MongoClient
 
 # Create app
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "supertopsecretprivatekey"
 
 # Render home page
 @app.route('/',methods=['GET', 'POST'])
@@ -25,13 +26,35 @@ def home():
         return render_template('home.html')
 
     if request.method == 'POST':
-        # TODO: Logic to process uploaded images
+        # check if a file was passed into the POST request
+        if 'image' not in request.files:
+            flash('No file was uploaded.')
+            return redirect(request.url)
 
-        passed = True # for now
-        if passed:
-            return redirect(url_for('predict', filename='test.png'))
-        else:
-            return redirect(url_for('error'))
+        image_file = request.files['image']
+
+        # if filename is empty, then assume no upload
+        if image_file.filename == '':
+            flash('No file was uploaded.')
+            return redirect(request.url)
+
+        # if the file is "legit"
+        if image_file:
+            passed = False
+            try:
+                filename = image_file.filename
+                filepath = os.path.join('tmp/temp_folder/', filename)
+                image_file.save(filepath)
+                passed = True
+            except Exception:
+                passed = False
+                flash(image_file.filename)
+
+            if passed:
+                return redirect(url_for('predict', filename=filename))
+            else:
+                flash('An error occurred, try again.')
+                return redirect(request.url)
 
 @app.route('/predict/<filename>', methods=['GET'])
 def predict(filename):
@@ -53,13 +76,13 @@ def server_error(error):
 
 if __name__ == '__main__':
     # load saved pickled model
-    with open('models/grad_boost_model.p', 'rb') as mod:
-        model = pickle.load(mod)
+   # with open('models/grad_boost_model.p', 'rb') as mod:
+       # model = pickle.load(mod)
 
     # connect to database
-    client = MongoClient('localhost', 27017)
-    db = client['frauds']
-    table = db['new_events12']
+    # client = MongoClient('localhost', 27017)
+    # db = client['frauds']
+    # table = db['new_events12']
     
     # run flask app
     app.run(host='0.0.0.0', port=8000, debug=True)

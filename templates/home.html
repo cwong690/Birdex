@@ -1,8 +1,18 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <h1 style="color:forestgreen">Birds</h1>
-    <p>This app will find and detect fraudulent activity.</p>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flash">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <p>This app will help classify birds.</p>
     <p>
         The data was pulled from the The Cornell Lab of Ornithology. It is a collection of about 48,000 images
         and more than 400 species of birds observed in North America. Birds are separated by male, female or
