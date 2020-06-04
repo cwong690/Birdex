@@ -10,7 +10,7 @@ from pymongo import MongoClient
 
 # Create app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "supertopsecretprivatekey"
+app.config.from_object('config.DevConfig')
 
 # Render home page
 @app.route('/',methods=['GET', 'POST'])
@@ -43,12 +43,12 @@ def home():
             passed = False
             try:
                 filename = image_file.filename
-                filepath = os.path.join('tmp/temp_folder/', filename)
+                filepath = os.path.join('/tmp/temp_folder/', filename)
                 image_file.save(filepath)
                 passed = True
             except Exception:
                 passed = False
-                flash(image_file.filename)
+                flash(dir(image_file))
 
             if passed:
                 return redirect(url_for('predict', filename=filename))
