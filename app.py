@@ -1,6 +1,8 @@
 from flask import Flask, flash, render_template, request, redirect, jsonify, url_for
 import pickle
 import numpy as np
+import os
+from werkzeug import secure_filename
 
 # from predict import predict
 # from test_script import test_script
@@ -42,7 +44,7 @@ def home():
         if image_file:
             passed = False
             try:
-                filename = image_file.filename
+                filename = secure_filename(image_file.filename)
                 filepath = os.path.join('/tmp/temp_folder/', filename)
                 image_file.save(filepath)
                 passed = True
