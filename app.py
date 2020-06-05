@@ -9,6 +9,7 @@ import requests
 from io import BytesIO
 
 from tensorflow.keras.models import load_model
+load_xception = load_model('saved_models/xception_final.h5')
 
 # from predict import predict
 # from test_script import test_script
@@ -26,10 +27,10 @@ def allowed_file(filename):
     return ('.' in filename) and (filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS)
 
 def predict(filepath):
-    img_bytes = BytesIO(filepath)
-    open_img = Image.open(img_bytes)
-    arr = np.array(open_img.resize((299,299)))
-    print(arr)
+    a = Image.open(filepath)
+    c = np.array(a.resize((299,299)))/255
+    prediction = load_xception.predict(c.reshape(1,299,299,3))
+    return np.round(prediction, 3)
 
 # Render home page
 @app.route('/',methods=['GET', 'POST'])
@@ -56,7 +57,9 @@ def upload_file():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             flash(f'{filename} saved successfully!')
-            return redirect(request.url)
+            
+            prediction = predict(filepath)
+            return render_template('home.html', prediction=prediction)
         else:
             flash('An error occurred, try again.')
             return redirect(request.url)
