@@ -4,6 +4,8 @@ import numpy as np
 import os
 from werkzeug import secure_filename
 
+from tensorflow.keras.models import load_model
+
 # from predict import predict
 # from test_script import test_script
 
@@ -44,10 +46,10 @@ def home():
         if image_file:
             passed = False
             try:
-                filename = secure_filename(image_file.filename)
-                filepath = os.path.join('/tmp/temp_folder/', filename)
-                image_file.save(filepath)
-                passed = True
+                # filename = secure_filename(image_file.filename)
+                # filepath = os.path.join('/tmp/temp_folder/', filename)
+                # image_file.save(filepath)
+                # passed = True
             except Exception:
                 passed = False
                 flash(dir(image_file))
