@@ -9,7 +9,7 @@ from tensorflow.keras.models import load_model
 # from predict import predict
 # from test_script import test_script
 
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
 
 # Create app
@@ -20,10 +20,7 @@ app.config.from_object('config.DevConfig')
 @app.route('/',methods=['GET', 'POST'])
 def home():
 
-    # # connect to database
-    # client = MongoClient('localhost', 27017)
-    # db = client['frauds']
-    # table = db['new_events12']
+
     
     if request.method == 'GET':
         # show the upload form
@@ -46,10 +43,10 @@ def home():
         if image_file:
             passed = False
             try:
-                # filename = secure_filename(image_file.filename)
-                # filepath = os.path.join('/tmp/temp_folder/', filename)
-                # image_file.save(filepath)
-                # passed = True
+                filename = secure_filename(image_file.filename)
+                filepath = os.path.join('/tmp/temp_folder/', filename)
+                image_file.save(filepath)
+                passed = True
             except Exception:
                 passed = False
                 flash(dir(image_file))
