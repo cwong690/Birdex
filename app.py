@@ -4,6 +4,10 @@ import numpy as np
 import os
 from werkzeug import secure_filename
 
+from PIL import Image
+import requests
+from io import BytesIO
+
 from tensorflow.keras.models import load_model
 
 # from predict import predict
@@ -16,53 +20,61 @@ from tensorflow.keras.models import load_model
 app = Flask(__name__)
 app.config.from_object('config.DevConfig')
 
+# make sure users are only allowed to upload image files
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+def allowed_file(filename):
+    return ('.' in filename) and (filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS)
+
+def predict(filepath):
+    img_bytes = BytesIO(filepath)
+    open_img = Image.open(img_bytes)
+    arr = np.array(open_img.resize((299,299)))
+    print(arr)
+
 # Render home page
 @app.route('/',methods=['GET', 'POST'])
-def home():
-
-
-    
+def upload_file():
     if request.method == 'GET':
         # show the upload form
         return render_template('home.html')
-
+    
     if request.method == 'POST':
-        # check if a file was passed into the POST request
+        # check if the post request has the file part
         if 'image' not in request.files:
-            flash('No file was uploaded.')
+            flash(f'No image part: {request.files}')
             return redirect(request.url)
-
-        image_file = request.files['image']
-
-        # if filename is empty, then assume no upload
-        if image_file.filename == '':
-            flash('No file was uploaded.')
+        
+        file = request.files['image']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash(f'No selected file: {file.filename}')
             return redirect(request.url)
+        
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            flash(f'{filename} saved successfully!')
+            return redirect(request.url)
+        else:
+            flash('An error occurred, try again.')
+            return redirect(request.url)
+#     return render_template('home.html')
 
-        # if the file is "legit"
-        if image_file:
-            passed = False
-            try:
-                filename = secure_filename(image_file.filename)
-                filepath = os.path.join('/tmp/temp_folder/', filename)
-                image_file.save(filepath)
-                passed = True
-            except Exception:
-                passed = False
-                flash(dir(image_file))
 
-            if passed:
-                return redirect(url_for('predict', filename=filename))
-            else:
-                flash('An error occurred, try again.')
-                return redirect(request.url)
+# response = requests.get(url)
+# img = Image.open(BytesIO(response.content))
 
-@app.route('/predict/<filename>', methods=['GET'])
-def predict(filename):
-    # TODO: Logic to load the uploaded image filename and predict the
-    # labels
+# @app.route('/predict/<filepath>', methods=['GET'])
+# def predict(filepath):
+    
+#     img_bytes = BytesIO(filepath)
+#     open_img = Image.open(img_bytes)
+#     arr = np.array(open_img.resize((299,299)))
+#     print(arr)
 
-    return render_template('predict.html')
+#     return render_template('predict.html')
 
 
 @app.errorhandler(500)
