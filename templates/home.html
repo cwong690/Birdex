@@ -27,7 +27,11 @@
         <input type="file" name="image" id="image">
         <input type="submit" value="Predict">
     </form>
-    <p>It's a {{ prediction }}!</p>
-    
+    <p>The probability it is a: </p>
+    <p>{% for i in label_range %}</p>
+        <b>{{ labels[i] }}:</b> {{ prediction[0][i] }}%
+       {% endfor %}
+
+<!-- <img src="{{ filepath }}" alt="HTML5 Icon" width="128" height="128"/> -->
 
 {% endblock %}

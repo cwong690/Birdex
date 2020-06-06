@@ -8,6 +8,9 @@ from PIL import Image
 import requests
 from io import BytesIO
 
+import sys
+sys.path.append("../")
+
 from tensorflow.keras.models import load_model
 load_xception = load_model('saved_models/xception_final.h5')
 
@@ -23,14 +26,16 @@ app.config.from_object('config.DevConfig')
 
 # make sure users are only allowed to upload image files
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+
 def allowed_file(filename):
     return ('.' in filename) and (filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS)
 
 def predict(filepath):
-    a = Image.open(filepath)
-    c = np.array(a.resize((299,299)))/255
-    prediction = load_xception.predict(c.reshape(1,299,299,3))
-    return np.round(prediction, 3)
+    img = Image.open(filepath)
+    img_rs = np.array(img.resize((299,299)))/255
+    prediction = load_xception.predict(img_rs.reshape(1,299,299,3))
+    return np.round(prediction * 100, 1)
 
 # Render home page
 @app.route('/',methods=['GET', 'POST'])
@@ -58,12 +63,13 @@ def upload_file():
             file.save(filepath)
             flash(f'{filename} saved successfully!')
             
+            labels = ['Duck', 'Finch', 'Hawk']
+            label_range = range(len(labels))
             prediction = predict(filepath)
-            return render_template('home.html', prediction=prediction)
+            return render_template('home.html', prediction=prediction, labels=labels, label_range=label_range)
         else:
             flash('An error occurred, try again.')
             return redirect(request.url)
-#     return render_template('home.html')
 
 
 # response = requests.get(url)
@@ -83,10 +89,6 @@ def upload_file():
 @app.errorhandler(500)
 def server_error(error):
     return render_template('error.html'), 500
-
-
-
-
 
 
 
