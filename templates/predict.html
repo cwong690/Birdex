@@ -1,5 +1,19 @@
 {% extends 'layout.html' %}
 {% block body %}
-<p>Our algorithm thinks it is a Smartphone!</p>
+
+<p>Upload an image and the algorithm will predict the bird!</p>
+
+<form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" id="image">
+    <input type="submit" value="Predict">
+</form>
+
+<p>The probability it is a: </p>
+<p>{% for i in label_range %}</p>
+    <b>{{ labels[i] }}:</b> {{ prediction[0][i] }}%
+   {% endfor %}
+
+<img src="{{ filepath }}" alt="HTML5 Icon" width="128" height="128"/>
+
 
 {% endblock %}

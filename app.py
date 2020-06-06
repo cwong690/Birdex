@@ -38,7 +38,18 @@ def predict(filepath):
     return np.round(prediction * 100, 1)
 
 # Render home page
-@app.route('/',methods=['GET', 'POST'])
+# @app.route('/', methods=['GET', 'POST'])
+# def home():
+# #     if request.method == 'GET':
+# #         return render_template('home.html')
+#     if "submit_button" in request.form:
+#         return render_template('predict.html')
+#     else:
+#         return render_template('home.html')
+
+
+# Render predict page
+@app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'GET':
         # show the upload form
