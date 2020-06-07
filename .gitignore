@@ -8,4 +8,4 @@ logs/
 .DS_Store
 __pycache__/
 .env
-
+/tmp/temp_folder

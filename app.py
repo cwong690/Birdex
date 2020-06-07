@@ -52,7 +52,6 @@ def predict(filepath):
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'GET':
-        # show the upload form
         return render_template('home.html')
     
     if request.method == 'POST':
@@ -75,9 +74,8 @@ def upload_file():
             flash(f'{filename} saved successfully!')
             
             labels = ['Duck', 'Finch', 'Hawk']
-            label_range = range(len(labels))
             prediction = predict(filepath)
-            return render_template('home.html', prediction=prediction, labels=labels, label_range=label_range)
+            return render_template('home.html', prediction=prediction, labels=labels)
         else:
             flash('An error occurred, try again.')
             return redirect(request.url)

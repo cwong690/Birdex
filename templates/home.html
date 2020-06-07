@@ -25,20 +25,37 @@
         <input type="submit" name="submit_button" value="Test Model">
     </form> -->
 
-<p>Upload an image and the algorithm will predict the bird!</p>
+<p style="text-align:center">Upload an image and the algorithm will predict the bird!</p>
 
-<form action="/" method="post" enctype="multipart/form-data">
+<form style="text-align:center" action="/" method="post" enctype="multipart/form-data">
     <input type="file" name="image" id="image">
     <input type="submit" value="Predict">
 </form>
 
-<p>The probability it is a: </p>
-<p>{% for i in label_range %}</p>
-    <b>{{ labels[i] }}:</b> {{ prediction[0][i] }}%
-   {% endfor %}
+<br>
+<br>
 
+<div class="container">
+    <table style="width:80%;margin-left:auto;margin-right:auto;padding:1px;border-spacing:5px;" id=table>
+        <caption style="padding:7px;">Predicted Probabilities</caption>
+        <tr></tr>
+        <tr>
+            {% for i in labels %}
+            <th>{{ i }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td style="text-align:center">{{ prediction[0][0] }}</td>
+            <td style="text-align:center">{{ prediction[0][1] }}</td>
+            <td style="text-align:center">{{ prediction[0][2] }}</td>
+        </tr>
+    </table>
+</div>
+
+<br>
+<br>
 <!-- <img src="{{ filepath }}" alt="HTML5 Icon" width="128" height="128"/> -->
 
-<img src="https://i.ytimg.com/vi/5Nj2BngIko0/maxresdefault.jpg" alt="HTML5 Icon" width="128" height="128"/>
+<center><img src="https://i.ytimg.com/vi/5Nj2BngIko0/maxresdefault.jpg" alt="HTML5 Icon" width="128" height="128"/></center>
     
 {% endblock %}
