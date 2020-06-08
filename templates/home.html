@@ -3,13 +3,13 @@
 {% block content %}
 
     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class="flash">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+        {% if messages %}
+        <ul class="flash">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     {% endwith %}
     <p>This app will help classify the taxonomic order of birds.</p>
     <p>
@@ -19,84 +19,15 @@
         and their corresponding labels. So why is bird conservation important? Also, they're basically modern
         dinosaurs.
     </p>
-    <p> 
-        
-    </p>
 
-<!--     <form method="post" action="/predict">
-        <input type="submit" name="submit_button" value="Test Model">
-    </form> -->
+    <p style="text-align:center">Upload an image and the algorithm will predict the bird!</p>
 
-<p style="text-align:center">Upload an image and the algorithm will predict the bird!</p>
+    <form style="text-align:center" action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" id="image">
+        <input type="submit" value="Predict">
+    </form>
 
-<form style="text-align:center" action="/" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" id="image">
-    <input type="submit" value="Predict">
-</form>
+<!--     <img src="static/images/indoor_duck.png" alt="HTML5 Icon" width="128" height="128"/> -->
 
-<br>
-<br>
-
-<div>
-    <table style="width:80%;margin-left:auto;margin-right:auto;padding:1px;border-spacing:5px;" id=table>
-        <caption style="padding:7px;">Predicted Probabilities</caption>
-        <tr></tr>
-        <tr>
-            {% for i in labels[:8] %}
-            <th>{{ i }}</th>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in prediction[:8] %}
-            <td style="text-align:center">{{ i }}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in labels[8:16] %}
-            <th>{{ i }}</th>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in prediction[8:16] %}
-            <td style="text-align:center">{{ i }}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in labels[16:24] %}
-            <th>{{ i }}</th>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in prediction[16:24] %}
-            <td style="text-align:center">{{ i }}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in labels[24:32] %}
-            <th>{{ i }}</th>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in prediction[24:32] %}
-            <td style="text-align:center">{{ i }}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in labels[32:39] %}
-            <th>{{ i }}</th>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for i in prediction[32:39] %}
-            <td style="text-align:center">{{ i }}</td>
-            {% endfor %}
-        </tr>
-    </table>
-</div>
-
-<br>
-<br>
-<!-- <img src="{{ filepath }}" alt="HTML5 Icon" width="128" height="128"/> -->
-
-<center><img src="https://i.ytimg.com/vi/5Nj2BngIko0/maxresdefault.jpg" alt="HTML5 Icon" width="128" height="128"/></center>
+    <center><img src="https://i.ytimg.com/vi/5Nj2BngIko0/maxresdefault.jpg" alt="HTML5 Icon" width="128" height="128"/></center>
 {% endblock %}

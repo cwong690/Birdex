@@ -32,8 +32,6 @@ app.config.from_object('config.DevConfig')
 
 # make sure users are only allowed to upload image files
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-labels = np.unique(np.array(orders_df['species_group'][:21129].values))
-
 
 def allowed_file(filename):
     return ('.' in filename) and (filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS)
@@ -60,9 +58,8 @@ def predict(filepath):
 def upload_file():
     if request.method == 'GET':
         return render_template('home.html')
-    
     if request.method == 'POST':
-        # check if the post request has the file part
+#         check if the post request has the file part
         if 'image' not in request.files:
             flash(f'No image part: {request.files}')
             return redirect(request.url)
@@ -79,10 +76,8 @@ def upload_file():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             flash(f'{filename} saved successfully!')
-            
-            labels = np.unique(np.array(orders_df['species_group'][:21129].values))
             prediction = predict(filepath)
-            return render_template('home.html', prediction=prediction, labels=labels)
+            return redirect('predict.html', prediction=prediction)
         else:
             flash('An error occurred, try again.')
             return redirect(request.url)
@@ -91,15 +86,10 @@ def upload_file():
 # response = requests.get(url)
 # img = Image.open(BytesIO(response.content))
 
-# @app.route('/predict/<filepath>', methods=['GET'])
-# def predict(filepath):
-    
-#     img_bytes = BytesIO(filepath)
-#     open_img = Image.open(img_bytes)
-#     arr = np.array(open_img.resize((299,299)))
-#     print(arr)
-
-#     return render_template('predict.html')
+@app.route('/predict', methods=['GET', 'POST'])
+def predict(prediction):
+    labels = np.unique(np.array(orders_df['species_group'][:21129].values))
+    return render_template('predict.html', labels=labels)
 
 
 @app.errorhandler(500)
