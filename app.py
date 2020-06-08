@@ -28,6 +28,8 @@ orders_df = pd.read_csv('data/orders_df.csv', index_col=0)
 
 # Create app
 app = Flask(__name__)
+
+# Choose configuration, env is development or production
 app.config.from_object('config.DevConfig')
 
 # make sure users are only allowed to upload image files
@@ -36,28 +38,24 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file(filename):
     return ('.' in filename) and (filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS)
 
-def predict(filepath):
+def model_predict(filepath):
     img = Image.open(filepath)
     img_rs = np.array(img.resize((299,299)))/255
     prediction = species_xception.predict(img_rs.reshape(1,299,299,3))
     return np.round(prediction * 100, 1)[0]
 
 # Render home page
-# @app.route('/', methods=['GET', 'POST'])
-# def home():
-# #     if request.method == 'GET':
-# #         return render_template('home.html')
-#     if "submit_button" in request.form:
-#         return render_template('predict.html')
-#     else:
-#         return render_template('home.html')
-
-
-# Render predict page
 @app.route('/', methods=['GET', 'POST'])
-def upload_file():
+def home():
     if request.method == 'GET':
         return render_template('home.html')
+
+
+# response = requests.get(url)
+# img = Image.open(BytesIO(response.content))
+
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
     if request.method == 'POST':
 #         check if the post request has the file part
         if 'image' not in request.files:
@@ -76,20 +74,12 @@ def upload_file():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             flash(f'{filename} saved successfully!')
-            prediction = predict(filepath)
-            return redirect('predict.html', prediction=prediction)
+            labels = np.unique(np.array(orders_df['species_group'][:21129].values))
+            prediction = model_predict(filepath)
+            return render_template('predict.html', prediction=prediction, labels=labels)
         else:
             flash('An error occurred, try again.')
             return redirect(request.url)
-
-
-# response = requests.get(url)
-# img = Image.open(BytesIO(response.content))
-
-@app.route('/predict', methods=['GET', 'POST'])
-def predict(prediction):
-    labels = np.unique(np.array(orders_df['species_group'][:21129].values))
-    return render_template('predict.html', labels=labels)
 
 
 @app.errorhandler(500)

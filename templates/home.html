@@ -2,15 +2,6 @@
 
 {% block content %}
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class="flash">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
     <p>This app will help classify the taxonomic order of birds.</p>
     <p>
         The data was pulled from the The Cornell Lab of Ornithology. It is a collection of about 48,000 images

@@ -15,11 +15,13 @@
     
 </head>
     
-<body>
+<body style="background-image: url({{ url_for('static', filename='images/birds_background.jpg') }})">
+    
 <!--     <center><img src="images/birds_background.jpg" alt="HTML5 Icon" width="128" height="128"/></center> -->
     <h1 style="color:forestgreen; text-align:center;" >Birds</h1>
     <hr>
     {% block content %}{% endblock %}
+    {% block body %}{% endblock %}
     
 </body>
 

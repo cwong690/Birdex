@@ -11,7 +11,7 @@ class Config:
     # SESSION_COOKIE_NAME = os.environ.get('SESSION_COOKIE_NAME')
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
-    UPLOAD_FOLDER = 'tmp/temp_folder'
+    UPLOAD_FOLDER = 'static/images'
 
 
 class ProdConfig(Config): # inherits class Config

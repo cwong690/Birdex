@@ -1,10 +1,19 @@
 {% extends 'layout.html' %}
 {% block body %}
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flash">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
 <div>
+    <p style="text-align:center;">Predicted Probabilities</p>
     <table style="width:80%;margin-left:auto;margin-right:auto;padding:1px;border-spacing:5px;" id=table>
-        <caption style="padding:7px;">Predicted Probabilities</caption>
-        <tr> </tr>
         <tr>
             {% for i in labels[:8] %}
             <th>{{ i }}</th>
