@@ -50,7 +50,7 @@ X = X/255.0
 
 # grab label
 # INPUT VALUES MUST BE ARRAYS
-label = np.unique(np.array(orders_df['species_group'][:21129].values))
+label = np.array(orders_df['species_group'][:21129].values)
 
 # labels are alphabetical with np.unique
 y = (label.reshape(-1,1) == np.unique(orders_df['species_group'][:21129])).astype(float)
