@@ -12,6 +12,7 @@ from io import BytesIO # reading bytes
 
 # progress bar
 from tqdm import tqdm
+getattr(tqdm, '_instances', {}).clear()
 
 # Transfer Model Utils
 from transfer_model_utils import *
@@ -49,10 +50,10 @@ X = X/255.0
 
 # grab label
 # INPUT VALUES MUST BE ARRAYS
-label = np.array(orders_df['order'][:21129].values)
+label = np.unique(np.array(orders_df['species_group'][:21129].values))
 
 # labels are alphabetical with np.unique
-y = (label.reshape(-1,1) == np.unique(orders_df['order'][:21129])).astype(float)
+y = (label.reshape(-1,1) == np.unique(orders_df['species_group'][:21129])).astype(float)
 
 # number of outputs/labels available and image input size
 n_categories = y.shape[1]
@@ -62,7 +63,7 @@ input_size = (299,299,3)
 # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Set tensorboard callback with specified folder and timestamp
-log_xcept = os.path.join("logs/orders_xception", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+log_xcept = os.path.join("logs/species_xception2", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 tensorboard_callback = TensorBoard(log_dir=log_xcept, histogram_freq=1)
 
 # create transfer model
@@ -77,5 +78,5 @@ transfer_model.compile(optimizer=RMSprop(lr=0.001), loss='categorical_crossentro
 # fit model
 xception_final = transfer_model.fit(X, y, batch_size=1000, epochs=5, validation_split=0.1, callbacks=[tensorboard_callback])
 
-transfer_model.save('saved_models/orders_xception.h5')
+transfer_model.save('saved_models/species_xception.h5')
 # load_L_xception = tf.keras.models.load_model('saved_models/large_xception.h5')

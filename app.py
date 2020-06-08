@@ -1,5 +1,6 @@
 from flask import Flask, flash, render_template, request, redirect, jsonify, url_for
 import pickle
+import pandas as pd
 import numpy as np
 import os
 from werkzeug import secure_filename
@@ -11,8 +12,11 @@ from io import BytesIO
 import sys
 sys.path.append("../")
 
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 load_xception = load_model('saved_models/xception_final.h5')
+orders_xception = tf.keras.models.load_model('saved_models/orders_xception.h5')
+orders_df = pd.read_csv('data/orders_df.csv', index_col=0)
 
 # from predict import predict
 # from test_script import test_script
@@ -34,8 +38,8 @@ def allowed_file(filename):
 def predict(filepath):
     img = Image.open(filepath)
     img_rs = np.array(img.resize((299,299)))/255
-    prediction = load_xception.predict(img_rs.reshape(1,299,299,3))
-    return np.round(prediction * 100, 1)
+    prediction = orders_xception.predict(img_rs.reshape(1,299,299,3))
+    return np.round(prediction * 100, 1)[0]
 
 # Render home page
 # @app.route('/', methods=['GET', 'POST'])
@@ -73,7 +77,7 @@ def upload_file():
             file.save(filepath)
             flash(f'{filename} saved successfully!')
             
-            labels = ['Duck', 'Finch', 'Hawk']
+            labels = np.unique(np.array(orders_df['order'][:21129].values))
             prediction = predict(filepath)
             return render_template('home.html', prediction=prediction, labels=labels)
         else:
