@@ -6,24 +6,26 @@
   <title>Bird Classification</title>
   <meta name="description" content="Bird Classification">
   <meta name="author" content="Cindy Wong">
+  <link rel="stylesheet" type="text/css" href="static/css/bird_app.css"/>
   <script src="static/node_modules/chart.js/dist/Chart.bundle.js"></script>
-  <script src="static/css/bird_app.css"></script>
+<!--   <script src="static/css/bird_app.css"></script> -->
 </head>
 
-  <style>
-      body {
-          /* Here is how you can add bg image */
-          background: "/images/birds_background.jpg";
-          height: 100%;
-          /* how you can scale image properly while page resize */
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-      }
-  </style>
+<!-- <style>
+    body {
+/*         Here is how you can add bg image */
+        background-image: url_for("birds_background.jpg");
+        height: 80%;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</style> -->
     
 <body>
-    <h1 style="color:forestgreen">Birds</h1>
+<!--     <center><img src="images/birds_background.jpg" alt="HTML5 Icon" width="128" height="128"/></center> -->
+    <h1 style="color:forestgreen; text-align:center;" >Birds</h1>
     <hr>
     {% block content %}{% endblock %}
     

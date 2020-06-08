@@ -15,7 +15,9 @@ sys.path.append("../")
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 load_xception = load_model('saved_models/xception_final.h5')
-orders_xception = tf.keras.models.load_model('saved_models/orders_xception.h5')
+orders_xception = load_model('saved_models/orders_xception.h5')
+species_xception = load_model('saved_models/species_xception.h5')
+
 orders_df = pd.read_csv('data/orders_df.csv', index_col=0)
 
 # from predict import predict
@@ -30,6 +32,7 @@ app.config.from_object('config.DevConfig')
 
 # make sure users are only allowed to upload image files
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+labels = np.unique(np.array(orders_df['species_group'][:21129].values))
 
 
 def allowed_file(filename):
@@ -38,7 +41,7 @@ def allowed_file(filename):
 def predict(filepath):
     img = Image.open(filepath)
     img_rs = np.array(img.resize((299,299)))/255
-    prediction = orders_xception.predict(img_rs.reshape(1,299,299,3))
+    prediction = species_xception.predict(img_rs.reshape(1,299,299,3))
     return np.round(prediction * 100, 1)[0]
 
 # Render home page
@@ -77,7 +80,7 @@ def upload_file():
             file.save(filepath)
             flash(f'{filename} saved successfully!')
             
-            labels = np.unique(np.array(orders_df['order'][:21129].values))
+            labels = np.unique(np.array(orders_df['species_group'][:21129].values))
             prediction = predict(filepath)
             return render_template('home.html', prediction=prediction, labels=labels)
         else:

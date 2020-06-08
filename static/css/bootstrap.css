@@ -64,7 +64,11 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+/*   background-color: #fff; */
+  background-image: "birds_background.jpg";
+/*   background-repeat: no-repeat;
+  background-position: center; */
+/*   background-size: cover; */
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
