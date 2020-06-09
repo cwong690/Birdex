@@ -7,6 +7,7 @@ from tensorflow.keras.models import Model
 
 from tensorflow.keras.applications.xception import preprocess_input
 from tensorflow.keras.applications import Xception
+from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import SGD, RMSprop
