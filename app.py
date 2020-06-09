@@ -52,8 +52,10 @@ def home():
     
 @app.route('/chart', methods=['GET'])
 def chart():
-    group_sort = final_orders.groupby('species_group').count()['family'].sort_values(ascending=False)
-    return render_template('chart.html')
+    species_sort = final_orders.groupby('species_group').count()['family'].sort_values(ascending=False)
+    species_count = species_sort.values
+    species_index = species_sort.index
+    return render_template('chart.html', species_count=species_count, species_index=species_index)
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
