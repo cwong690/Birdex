@@ -14,7 +14,7 @@
     
 </head>
     
-<body style="background-image: url({{ url_for('static', filename='images/birds_background.jpg') }})">
+<body style="background-image: url({{ url_for('static', filename='images/birds_background.jpg') }}); background-size: cover;">
     
 <!--     <center><img src="images/birds_background.jpg" alt="HTML5 Icon" width="128" height="128"/></center> -->
     <h1 style="color:forestgreen; text-align:center;" >BIRDS</h1>
@@ -23,5 +23,11 @@
     {% block body %}{% endblock %}
     
 </body>
+
+<div style="position: relative; left: 5%; width: 800px; height: 800px;">    
+    <div style="position: absolute; bottom: 5px;">
+    background image credit: © wallup.net
+    </div>
+</div>
 
 </html>
