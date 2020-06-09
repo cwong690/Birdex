@@ -18,7 +18,7 @@ load_xception = load_model('saved_models/xception_final.h5')
 orders_xception = load_model('saved_models/orders_xception.h5')
 species_xception = load_model('saved_models/species_xception.h5')
 
-orders_df = pd.read_csv('data/orders_df.csv', index_col=0)
+final_orders = pd.read_csv('data/final_orders.csv', index_col=0)
 
 # from predict import predict
 # from test_script import test_script
@@ -47,12 +47,13 @@ def model_predict(filepath):
 # Render home page
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'GET':
-        return render_template('home.html')
-
-
-# response = requests.get(url)
-# img = Image.open(BytesIO(response.content))
+#     if request.method == 'GET':
+    return render_template('home.html')
+    
+@app.route('/chart', methods=['GET'])
+def chart():
+    group_sort = final_orders.groupby('species_group').count()['family'].sort_values(ascending=False)
+    return render_template('chart.html')
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
@@ -74,7 +75,7 @@ def predict():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
 #             flash(f'{filename} saved successfully!')
-            labels = np.unique(np.array(orders_df['species_group'][:21129].values))
+            labels = np.unique(np.array(final_orders['species_group'].values))
             prediction = model_predict(filepath)
             top_3 = prediction.argsort()[-1:-4:-1]
             return render_template('predict.html', prediction=prediction, labels=labels, top_3=top_3, filepath=filepath)
@@ -82,6 +83,8 @@ def predict():
             flash('An error occurred, try again.')
             return redirect(request.url)
 
+# response = requests.get(url)
+# img = Image.open(BytesIO(response.content))
 
 @app.errorhandler(500)
 def server_error(error):
