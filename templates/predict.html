@@ -12,8 +12,18 @@
     {% endwith %}
 
 <div>
-    <p style="text-align:center;">Predicted Probabilities</p>
-    <table style="width:80%;margin-left:auto;margin-right:auto;padding:1px;border-spacing:5px;" id=table>
+    <h3 style="text-align:center;color:#17a2b8">Predicted Probabilities</h3>
+    <p style="text-align:center;color:coral;font-size:17px">
+        Most Possible: <b>{{ labels[top_3[0]] }}</b> with <b>{{ prediction[top_3[0]] }}%</b> chance
+    </p>
+    
+    <center><img src="{{ filepath }}" alt="HTML5 Icon" width="128" height="128"/></center>
+    
+    <p style="text-align:center;color:gray;font-size:15px">
+        Second Place: <b>{{ labels[top_3[1]] }}</b> with <b>{{ prediction[top_3[1]] }}%</b> chance <br> Third Place: <b>{{ labels[top_3[2]] }}</b> with <b>{{ prediction[top_3[2]] }}%</b> chance
+    </p>
+    
+    <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
         <tr>
             {% for i in labels[:8] %}
             <th>{{ i }}</th>
@@ -21,9 +31,12 @@
         </tr>
         <tr>
             {% for i in prediction[:8] %}
-            <td style="text-align:center">{{ i }}</td>
+            <td style="text-align:center">{{ i }}%</td>
             {% endfor %}
         </tr>
+    </table>
+    
+    <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
         <tr>
             {% for i in labels[8:16] %}
             <th>{{ i }}</th>
@@ -31,9 +44,12 @@
         </tr>
         <tr>
             {% for i in prediction[8:16] %}
-            <td style="text-align:center">{{ i }}</td>
+            <td style="text-align:center">{{ i }}%</td>
             {% endfor %}
         </tr>
+    </table>
+    
+    <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
         <tr>
             {% for i in labels[16:24] %}
             <th>{{ i }}</th>
@@ -41,9 +57,12 @@
         </tr>
         <tr>
             {% for i in prediction[16:24] %}
-            <td style="text-align:center">{{ i }}</td>
+            <td style="text-align:center">{{ i }}%</td>
             {% endfor %}
         </tr>
+    </table>
+    
+    <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
         <tr>
             {% for i in labels[24:32] %}
             <th>{{ i }}</th>
@@ -51,9 +70,12 @@
         </tr>
         <tr>
             {% for i in prediction[24:32] %}
-            <td style="text-align:center">{{ i }}</td>
+            <td style="text-align:center">{{ i }}%</td>
             {% endfor %}
         </tr>
+    </table>
+    
+    <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
         <tr>
             {% for i in labels[32:39] %}
             <th>{{ i }}</th>
@@ -61,7 +83,7 @@
         </tr>
         <tr>
             {% for i in prediction[32:39] %}
-            <td style="text-align:center">{{ i }}</td>
+            <td style="text-align:center">{{ i }}%</td>
             {% endfor %}
         </tr>
     </table>

@@ -2,14 +2,7 @@
 
 {% block content %}
 
-    <p>This app will help classify the taxonomic order of birds.</p>
-    <p>
-        The data was pulled from the The Cornell Lab of Ornithology. It is a collection of about 48,000 images
-        and more than 400 species of birds observed in North America. Birds are separated by male, female or
-        juvenile since they look quite different. Text files are also included that contains image file names
-        and their corresponding labels. So why is bird conservation important? Also, they're basically modern
-        dinosaurs.
-    </p>
+    <p style='margin: 20px 10px;text-align:center;'>This app will help classify the taxonomic order of birds.</p>
 
     <p style="text-align:center">Upload an image and the algorithm will predict the bird!</p>
 
@@ -21,4 +14,14 @@
 <!--     <img src="static/images/indoor_duck.png" alt="HTML5 Icon" width="128" height="128"/> -->
 
     <center><img src="https://i.ytimg.com/vi/5Nj2BngIko0/maxresdefault.jpg" alt="HTML5 Icon" width="128" height="128"/></center>
+
+    <p style='margin: 20px 10px;text-align:center;'>
+        The data was pulled from the The Cornell Lab of Ornithology. It is a collection of about 48,000 images
+        and more than 400 species of birds observed in North America. Birds are separated by male, female or
+        juvenile since they look quite different. Text files are also included that contains image file names
+        and their corresponding labels. So why is bird conservation important? Also, they're basically modern
+        dinosaurs.<br>
+        Birds are difficult to classify due to the wide range of their looks even within birds of the same family. Female and male are often quite
+        different in appearance. Male birds tend to have much brighter colors used in courting female birds while female birds have duller colors.
+    </p>
 {% endblock %}

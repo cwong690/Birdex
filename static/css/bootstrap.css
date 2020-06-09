@@ -46,10 +46,6 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-/*   background-image: url("static/images/birds_background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; */
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -64,11 +60,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-/*   background-color: #fff; */
-  background-image: url("static/images/birds_background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: #fff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -87,8 +79,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+/*   margin: 20px 10px; */
+/*   margin-top: 0;
+  margin-bottom: 1rem; */
 }
 
 abbr[title],
@@ -212,6 +205,11 @@ svg {
 
 table {
   border-collapse: collapse;
+/*   width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:50px;
+  margin-bottom:50px; */
 }
 
 caption {
@@ -1702,6 +1700,11 @@ pre code {
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
+/*   width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:50px;
+  margin-bottom:50px; */
 }
 
 .table th,

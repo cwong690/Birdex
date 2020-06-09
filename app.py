@@ -73,10 +73,11 @@ def predict():
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
-            flash(f'{filename} saved successfully!')
+#             flash(f'{filename} saved successfully!')
             labels = np.unique(np.array(orders_df['species_group'][:21129].values))
             prediction = model_predict(filepath)
-            return render_template('predict.html', prediction=prediction, labels=labels)
+            top_3 = prediction.argsort()[-1:-4:-1]
+            return render_template('predict.html', prediction=prediction, labels=labels, top_3=top_3, filepath=filepath)
         else:
             flash('An error occurred, try again.')
             return redirect(request.url)
@@ -89,10 +90,6 @@ def server_error(error):
 
 
 if __name__ == '__main__':
-    # load saved pickled model
-   # with open('models/grad_boost_model.p', 'rb') as mod:
-       # model = pickle.load(mod)
-
     # connect to database
     # client = MongoClient('localhost', 27017)
     # db = client['frauds']
