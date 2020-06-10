@@ -1,8 +1,9 @@
 {% extends 'layout.html' %}
+<!-- <script src="static/node_modules/chart.js/dist/Chart.bundle.js"></script> -->
 
 {% block chart %}
 
-<canvas id="moreChart" width="1000px" height="700px"></canvas>
+<!-- <canvas id="moreChart" width="1000px" height="700px"></canvas>
 
     <script>
     // get chart canvas
@@ -41,7 +42,9 @@
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data : [{{ species_count }}],
+          data : [{% for value in species_count %}
+                    {{ value }},
+                  {% endfor %}],
           spanGaps: false
       }]
     }
@@ -83,6 +86,295 @@
 //     console.log(activePoint);
 //     console.log('x:' + activePoint[0]._view.x);
 //     console.log('maxWidth: ' + activePoint[0]._xScale.maxWidth);
-//     console.log('y: ' + activePoint[0]._view.y);
+//     console.log('y: ' + activePoint[0]._view.y); -->
+
+<style>
+    .bar_container {
+    float: left;
+    }
+    .order_container {
+    float: bottom;
+    }
+</style>
+
+
+<canvas id="myChart" width="700px" height="700px"></canvas>
+<div class="bar_container">
+<script>
+var ctx = document.getElementById('myChart').getContext("2d");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [{% for label in species_index %}
+                    "{{label}}",
+                {% endfor %}],
+        datasets: [{
+            label: 'Number of Species',
+            data: [{% for value in species_count %}
+                    {{ value }},
+                   {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        title: {
+            display: true,
+            text: 'Number of Species per Group'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script> 
+</div>
+    
+<div class="order_container">
+<script>
+var ctx2 = document.getElementById('myChart').getContext("2d");
+var orderChart = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: [{% for label in order_index %}
+                    "{{label}}",
+                {% endfor %}],
+        datasets: [{
+            label: 'Number of Species',
+            data: [{% for value in order_count %}
+                    {{ value }},
+                   {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)',
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)',
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        title: {
+            display: true,
+            text: 'Number of Species per Order'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+</script>
+</div>
+
+
+<!-- <div class="order_container">
+<canvas id="orderChart" width="700px" height="700px"></canvas>
+<script>
+var ctx = document.getElementById('orderChart');
+var orderChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [{% for label in order_index %}
+                    "{{label}}",
+                {% endfor %}],
+        datasets: [{
+            label: 'Number of Species',
+            data: [{% for value in order_count %}
+                    {{ value }},
+                   {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)',
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)',
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        title: {
+            display: true,
+            text: 'Number of Species per Order'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+</div> -->
 
 {% endblock %}

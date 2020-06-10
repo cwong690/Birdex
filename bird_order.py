@@ -58,7 +58,7 @@ _ = change_trainable_layers(transfer_model, 132)
 transfer_model.compile(optimizer=RMSprop(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
 # fit model
-history = transfer_model.fit(X_train, y_train, batch_size=1000, epochs=20, validation_split=0.1, callbacks=[tensorboard_callback])
+history = transfer_model.fit(X_train, y_train, batch_size=1000, epochs=15, validation_split=0.1, callbacks=[tensorboard_callback])
 
 transfer_model.save('saved_models/species3_xception.h5')
 
