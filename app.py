@@ -9,13 +9,12 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-import sys
-sys.path.append("../")
+import pickle
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
-load_xception = load_model('saved_models/xception_final.h5')
-orders_xception = load_model('saved_models/orders_xception.h5')
+# load_xception = load_model('saved_models/xception_final.h5')
+# orders_xception = load_model('saved_models/orders_xception.h5')
 species_xception = load_model('saved_models/species_xception.h5')
 
 final_orders = pd.read_csv('data/final_orders.csv', index_col=0)
@@ -71,7 +70,7 @@ def predict():
     if request.method == 'POST':
 #         check if the post request has the file part
         if 'image' not in request.files:
-            flash(f'No image part: {request.files}')
+            flash(f'No image: {request.files}')
             return redirect(request.url)
         
         file = request.files['image']
