@@ -1,9 +1,8 @@
-<!-- ![Duck, Duck, HAWK](graphs/bird_collage.png) -->
-<img alt="Duck, Duck, HAWK" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
+<img alt="Birds Collage" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
 
 # Duck, Duck, HAWK
 
-![badge](https://img.shields.io/badge/last%20modified-may%20%202020-success)
+![badge](https://img.shields.io/badge/last%20modified-june%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
 
 ## Table of Contents
@@ -112,10 +111,25 @@ This is what the CNN code looks like generally:
     <summary>CNN Code</summary>
     <img alt="CNN Code" src='graphs/first_conv_code.png'>
 </details>
-    
-### Model 1
 
-Model 1 contained 3 convolution layers and 2 dense layers.
+### CNN Model
+
+<details>
+    <summary>CNN Model Epochs</summary>
+    <img alt="Modelx 7 epochs" src='graphs/modelx7_epochs.png'>
+</details>
+
+<details>
+    <summary>CNN Model Accuracy/Loss Plots</summary>
+    <img alt="Modelx 7 acc/loss plots" src='graphs/modelx7_acc_loss_overfit.png'>
+</details>
+
+<details>
+    <summary>CNN Model Confusion Matrix</summary>
+    <img alt="Modelx 7 conf_mat" src='graphs/modelx_7_conf_mat.png'>
+</details> 
+
+### Transfer Learning Model
 
 <details>
     <summary>Model 1 Summary</summary>
@@ -136,40 +150,6 @@ Model 1 contained 3 convolution layers and 2 dense layers.
     <summary>Model 1 Confusion Matrix</summary>
     <img alt="Modelx 1 conf_mat" src='graphs/modelx_1_conf_mat.png'>
 </details>
-
-### Model 2
-
-Model 2 contained 3 convolution layers and 2 dense layers.
-
-<details>
-    <summary>Model 2 Accuracy/Loss Plots</summary>
-    <img alt="Modelx 2 acc/loss plots" src='graphs/modelx2_acc_loss_overfit.png'>
-</details>
-
-<details>
-    <summary>Model 2 Confusion Matrix</summary>
-    <img alt="Modelx 2 conf_mat" src='graphs/modelx_2_conf_mat.png'>
-</details> 
-
-### Model 7
-
-Model 7 contained 2 convolution layers but without Dropout layers and 2 dense layers.
-
-<details>
-    <summary>Model 7 Epochs</summary>
-    <img alt="Modelx 7 epochs" src='graphs/modelx7_epochs.png'>
-</details>
-
-<details>
-    <summary>Model 7 Accuracy/Loss Plots</summary>
-    <img alt="Modelx 7 acc/loss plots" src='graphs/modelx7_acc_loss_overfit.png'>
-</details>
-
-<details>
-    <summary>Model 7 Confusion Matrix</summary>
-    <img alt="Modelx 7 conf_mat" src='graphs/modelx_7_conf_mat.png'>
-</details> 
-
 
 ## Issues Notes
 

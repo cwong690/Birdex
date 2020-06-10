@@ -15,7 +15,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 # load_xception = load_model('saved_models/xception_final.h5')
 # orders_xception = load_model('saved_models/orders_xception.h5')
-species_xception = load_model('saved_models/species_xception.h5')
+species_xception = load_model('saved_models/species3_xception.h5')
 
 final_orders = pd.read_csv('data/final_orders.csv', index_col=0)
 
