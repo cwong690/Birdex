@@ -21,7 +21,13 @@
 The data was pulled from the [The Cornell Lab of Ornithology](https://www.birds.cornell.edu/home).  
 It is a collection of about 48,000 images and more than 400 species of birds observed in North America. Birds are separated by male, female or juvenile since they look quite different. Text files are also included that contains image file names and their corresponding labels.
 
-So why is bird conservation import? Check out this post by the American Bird Conservancy:
+<b>So why identify birds?</b>
+
+Bird conservation is becoming increasingly crucial as Earth changes. Birds are an indicator species because they are highly sensitive to their surroundings and even the slightest change in temperature can alter their behaviour. Different species have various types of behaviour and pattern.
+
+Due to the nature of birds, it is extremely difficult to track them all! This is why there are birders, using citizen science to help monitor them. Being able to identify the type of birds that are passing through certain areas can greatly help track their migratory patterns.
+
+So why is bird conservation important? Check out this post by the American Bird Conservancy:
 
 [Why Bird Conservation is Important](https://abcbirds.org/about/mission-and-strategy/why-conserve-birds/)
 
@@ -76,25 +82,11 @@ def resize_images_array(img_dir, folders, bucket):
 
 ### Birds
 
-First, a brief explanation of the <b>taxonomic hierarchy<b>:
+First, a brief explanation of the <b>taxonomic hierarchy</b>:
 
 <img alt="taxonomic hierarchy" src='graphs/taxonomy-hier.png' style='width: 600px;'>
 
-
-
-The images have 3 different channels for the color which makes up the colors in the main image.
-The shape of the images are **(299,299,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
-
-Let's check out some of the contestant within the data!
-
-Contestant 1: Waterfowl    |  Contestant 2: Grosbeak   |     Contestant 3: Hawk
-:-------------------------:|:-------------------------:|:-------------------------:
-![](graphs/readme_waterfowl.png)| ![](graphs/readme_grosbeak.png) | ![](graphs/hawk1.png)
-
-  
-Here are the RGB Channels of three classes of birds seen in this dataset:
-
-<img alt="RGB images" src='graphs/dhf_RGBplot.png' style='width: 600px;'>
+Every species belongs in a category of this hierarchy. It classifies species and group them up from broad cateogries to extremely specific groups. For example, humans belong to the Family of Hominidae, then Genus of Homo and the Species of Sapiens. "Human" is our common name!
 
 The exploratory data analysis began with looking at the number of species in the Order group of the birds.
 
@@ -106,6 +98,22 @@ Family is the next specific group in the taxonomic hierarchy. is predicting bird
 
 <img alt="fam countplot" src='graphs/readme_num_fam_group.png' style='width: 600px;'>
 
+The images have 3 different channels for the color which makes up the colors in the main image.
+The shape of the images are **(299,299,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
+
+Let's check out some of the contestant within the data!
+
+Contestant 1: Waterfowl    |  Contestant 2: Grosbeak   |     Contestant 3: Hawk
+:-------------------------:|:-------------------------:|:-------------------------:
+![](graphs/readme_waterfowl.png)| ![](graphs/readme_grosbeak.png) | ![](graphs/hawk1.png)
+
+<br>
+
+Here are the RGB Channels of three classes of birds seen in this dataset:
+
+<br>
+
+<img alt="RGB images" src='graphs/dhf_RGBplot.png' style='width: 600px;'>
 
 ## Convolutional Neural Network
 
@@ -172,7 +180,7 @@ After the first awful run, a simple model will be created using 3 types of birds
 
 Bird Flask gif
 <img alt="bird flask gif" src='graphs/bird_flask4.gif'>
-<img alt="bird flask img" src='graphs/birdflask.png'>
+<!-- <img alt="bird flask img" src='graphs/birdflask.png'> -->
 
 <details>
     <summary>Test a person in a bird costume</summary>
