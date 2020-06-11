@@ -1,6 +1,6 @@
 <img alt="Birds Collage" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
 
-# Duck, Duck, HAWK
+# BIRDEX
 
 ![badge](https://img.shields.io/badge/last%20modified-june%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)

@@ -13,17 +13,17 @@
 
 <div>
     <h3 style="text-align:center;color:#17a2b8">Predicted Probabilities</h3>
-    <p style="text-align:center;color:coral;font-size:17px">
+    <p style="text-align:center;color:coral;font-size:25px">
         Most Possible: <b>{{ labels[top_3[0]] }}</b> with <b>{{ prediction[top_3[0]] }}%</b> chance
     </p>
     
-    <center><img src="{{ filepath }}" alt="HTML5 Icon" width="128" height="128"/></center>
+    <center><img src="{{ filepath }}" alt="HTML5 Icon" width="299" height="299"/></center>
     
-    <p style="text-align:center;color:gray;font-size:15px">
+    <p style="text-align:center;color:gray;font-size:20px">
         Second Place: <b>{{ labels[top_3[1]] }}</b> with <b>{{ prediction[top_3[1]] }}%</b> chance <br> Third Place: <b>{{ labels[top_3[2]] }}</b> with <b>{{ prediction[top_3[2]] }}%</b> chance
     </p>
     
-    <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
+<!--     <table border="2" style="width:80%;margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;text-align:center;">
         <tr>
             {% for i in labels[:8] %}
             <th>{{ i }}</th>
@@ -87,7 +87,7 @@
             {% endfor %}
         </tr>
     </table>
-</div>
+</div> -->
 
 
 {% endblock %}

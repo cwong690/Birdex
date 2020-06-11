@@ -26,17 +26,17 @@ def resize_images_array(img_dir, file_paths):
     return np.array(img_arrays)
 
 # obtain image data in arrays
-X = resize_images_array(img_dir, orders_df['file_path'][21128:21132])
+X = resize_images_array(img_dir, orders_df['file_path'][21125:21135])
 
 # normalize RGB values
 X = X/255.0
 
 # grab label
 # INPUT VALUES MUST BE ARRAYS
-label = np.array(orders_df['species_group'][21128:21132].values)
+label = np.array(orders_df['species_group'][:10].values)
 
 # labels are alphabetical with np.unique
-y = (label.reshape(-1,1) == np.unique(orders_df['species_group'][21128:21132])).astype(float)
+y = (label.reshape(-1,1) == np.unique(orders_df['species_group'][21125:21135])).astype(float)
 
 # number of outputs/labels available and image input size
 n_categories = y.shape[1]
@@ -60,9 +60,7 @@ transfer_model.compile(optimizer=RMSprop(lr=0.001), loss='categorical_crossentro
 # fit model
 history = transfer_model.fit(X_train, y_train, epochs=2, validation_split=0.1)
 
-# transfer_model.save('saved_models/species_2_xception.h5')
-
-# print('Model saved.')
+print('Model created.')
 # load_L_xception = tf.keras.models.load_model('saved_models/large_xception.h5')
 
 acc = history.history['accuracy']
@@ -81,17 +79,49 @@ print('Accuracy CSV saved.')
 
 pred1 = transfer_model.predict(X_test)
 print('X_test predicted')
+
+print(y_test, y_test.shape)
+print(pred1, pred1.shape)
+print(pred1.argmax(axis=1), pred1.argmax(axis=1).shape)
+
+print('starting sklearn classification report')
+sk_report = classification_report(
+    digits=6,
+    y_true=y_test, 
+    y_pred=pred1)
+print(sk_report)
+print('sk_report')
+
+print('begin custom Class Report')
+report_with_auc = class_report(
+    y_true=y_test, 
+    y_pred=pred1.argmax(axis=1))
+print('report variable created')
+print(report_with_auc)
+report_with_auc.to_csv('data/class_report_xception.csv')
+print('report saved.')
+
+# print('Starting ROC Curve Plot')
+
+# fpr, tpr, thresholds = roc_curve(y_test, pred1.argmax(axis=1))
+# fig, ax = plt.subplots(figsize=(8,6))
+# auc_score = metrics.roc_auc_score(y_test, pred1)
+# plot_roc_curve(ax, fpr, tpr, auc_score,'Xception ROC Curve')
+# plt.savefig('graphs/test_xception_roc_curve.png')
+# print('ROC saved')
+
 print('Starting Confusion Matrix...')
-conf_mat = confusion_matrix(y_test.argmax(axis=1), pred1.argmax(axis=1))
+conf_mat = confusion_matrix(y_test.argmax(axis=1), pred1.argmax(axis=1), labels=np.unique(orders_df['species_group'][21125:21135]))
 np.savetxt('data/test_confusion_matrix.csv', conf_mat)
 
 print('Onto Classification Report...')
-classify = classification_report(y_test.argmax(axis=1), pred1.argmax(axis=1),labels=np.unique(pred1))
+classify = classification_report(y_test.argmax(axis=1), pred1.argmax(axis=1),labels=np.unique(orders_df['species_group'][21125:21135]))
 print('classify variable obtained.')
-np.savetxt('data/test_classify.csv', classify)
+np.savetxt('data/test_class_report.csv', classify)
 
-print('recall score')
-precision = recall_score(y_test.argmax(axis=1),pred1.argmax(axis=1))
-np.savetxt('data/recall_score.csv', precision)
+print('Starting recall score...')
+recall = recall_score(y_test.argmax(axis=1),pred1.argmax(axis=1))
+print('recall variable obtained.')
+np.savetxt('data/test_recall_score.csv', recall)
 
 print('End.')

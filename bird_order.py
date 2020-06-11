@@ -81,12 +81,21 @@ print('Accuracy CSV saved.')
 
 pred1 = transfer_model.predict(X_test)
 print('X_test predicted')
+print('Starting ROC Curve Plot')
+
+fpr, tpr, thresholds = roc_curve(y_test, pred1.argmax(axis=1))
+fig, ax = plt.subplots(figsize=(8,6))
+auc_score = metrics.roc_auc_score(y_test, pred1)
+plot_roc_curve(ax, fpr, tpr, auc_score,'Xception ROC Curve')
+plt.savefig('graphs/xception_roc_curve.png')
+
+
 print('Starting Confusion Matrix...')
-conf_mat = confusion_matrix(y_test.argmax(axis=1), pred1.argmax(axis=1))
+conf_mat = confusion_matrix(y_test.argmax(axis=1), pred1.argmax(axis=1), labels=np.unique(orders_df['species_group'][:21129])
 np.savetxt('data/confusion_matrix.csv', conf_mat)
 
 print('Onto Classification Report...')
-classify = classification_report(y_test.argmax(axis=1), pred1.argmax(axis=1),labels=np.unique(pred1))
+classify = classification_report(y_test.argmax(axis=1), pred1.argmax(axis=1),labels=np.unique(orders_df['species_group'][:21129])
 print('classify variable obtained.')
 np.savetxt('data/class_report.csv', classify)
 
