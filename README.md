@@ -12,7 +12,7 @@
 - [Data Preparation](#data-preparation)
     - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
-- [Birdex: Flask App] (#birdex)
+- [Birdex: Flask App](#birdex)
 - [Summary](#summary)
 - [Issues Notes](#issues-notes)
 - [Future Work](#future-work)
