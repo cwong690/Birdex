@@ -1,7 +1,7 @@
 <img alt="Birds Collage" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
 
 # BIRDEX
-##### Web based Flask app to predict the family group of birds from images using transfer learning.
+### Web based Flask app to predict the family group of birds from images using transfer learning.
 
 ![badge](https://img.shields.io/badge/last%20modified-june%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
@@ -12,6 +12,7 @@
 - [Data Preparation](#data-preparation)
     - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
+- [Birdex: Flask App] (#birdex)
 - [Summary](#summary)
 - [Issues Notes](#issues-notes)
 - [Future Work](#future-work)
@@ -162,6 +163,8 @@ After the first awful run, a simple model will be created using 3 types of birds
     <summary>Model Confusion Matrix</summary>
     <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
 </details>
+
+## Birdex: Flask App
 
 ## Issues Notes
 
