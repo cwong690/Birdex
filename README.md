@@ -14,12 +14,9 @@
 - [Convolutional Neural Network](#convolutional-neural-network)
 - [Birdex: Flask App](#birdex-flask-app)
 - [Summary](#summary)
-- [Issues Notes](#issues-notes)
 - [Future Work](#future-work)
 
 ## Overview
-
-
 
 The data was pulled from the [The Cornell Lab of Ornithology](https://www.birds.cornell.edu/home).  
 It is a collection of about 48,000 images and more than 400 species of birds observed in North America. Birds are separated by male, female or juvenile since they look quite different. Text files are also included that contains image file names and their corresponding labels.
@@ -34,8 +31,6 @@ Also, they're basically modern dinosaurs.
 
 This Berkeley articles on why birds are dinosaurs (but also shows the skeptical side):
 [Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
-
-
 
 
 ## Data Preparation
@@ -79,7 +74,13 @@ def resize_images_array(img_dir, folders, bucket):
 ```
 </details>
 
-### Birds EDA
+### Birds
+
+First, a brief explanation of the <b>taxonomic hierarchy<b>:
+
+<img alt="taxonomic hierarchy" src='graphs/taxonomy-hier.png' style='width: 600px;'>
+
+
 
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(299,299,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
@@ -93,12 +94,15 @@ Contestant 1: Waterfowl    |  Contestant 2: Grosbeak   |     Contestant 3: Hawk
   
 Here are the RGB Channels of three classes of birds seen in this dataset:
 
-
 <img alt="RGB images" src='graphs/dhf_RGBplot.png' style='width: 600px;'>
 
 The exploratory data analysis began with looking at the number of species in the Order group of the birds.
 
-Since the interest is predicting birds based on family groups, a count plot for the number of species in each family group is created.
+<img alt="order countplot" src='graphs/readme_num_species_order.png' style='width: 600px;'>
+
+As seen in the plot, if the model were to predict the Order of the birds, there would be a huge inbalance in the dataset. Unfortunately, there are simply more birds included within the Passeriformes Order (perching birds, the largest order of birds). For example, the Leptosomiformes Order only contains one type of bird: Cuckoo Rollers!
+
+Family is the next specific group in the taxonomic hierarchy. is predicting birds based on family groups, a count plot for the number of species in each family group is created.
 
 <img alt="fam countplot" src='graphs/readme_num_fam_group.png' style='width: 600px;'>
 
@@ -166,17 +170,19 @@ After the first awful run, a simple model will be created using 3 types of birds
 
 ## Birdex: Flask App
 
-## Issues Notes
+Bird Flask gif
+<img alt="bird flask gif" src='graphs/bird_flask4.gif'>
+<img alt="bird flask img" src='graphs/birdflask.png'>
 
-- birds are labeled by species but also by gender and juvenile/adult. They DO all looke quite different especially the colors between the females and males
-- another reason for poor model: birds dont have the same amount of images, some have 20 something, some has 120
-    - A TON of labels (555 total), very sparse, along with unbalanced amounts of bird images
-    - checked inputs, y labels and x labels
-    - checked images folders, different amounts of bird images
-    - checked slicing and what images i am getting, turns out i could be slicing where each bird only has one image
-        - fix by grabbing sequentially because all the birds in one folder are next to each other in dataframe
-- model was awful, figured out one hot encoded the wrong numbers due to the fact that some numbers are missing and not in a perfect range
+<details>
+    <summary>Test a person in a bird costume</summary>
+    <img alt="hawk costume" src='graphs/hawk_costume.gif'>
+</details>
 
+<details>
+    <summary>Test a non-bird: CAT</summary>
+    <img alt="Model conf_mat" src='graphs/booboo.gif'>
+</details>
 
 ## Future Work
 
