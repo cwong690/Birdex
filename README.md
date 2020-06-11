@@ -35,7 +35,7 @@ This Berkeley articles on why birds are dinosaurs (but also shows the skeptical 
 ## Data Preparation
 
 Since there are many images, Amazon S3 came into play. The images are loaded into a bucket and stored in separated folders of the bird species.
-While the original goal is to classify around 555 species of birds with more than 40,000 images, as it will be shown later, it was not possible for now. The pivoted project goal is to identify 3 different types of birds: **ducks, finches, and hawks**.
+For this project, 21129 images will be used which includes 39 family groups of birds.
 
 A function is written to retrieve the images from the S3 bucket while also resizing them, convert to array, and append to a list. This is due to the need for the input of the neural network to be numpy arrays.
 
@@ -61,7 +61,7 @@ def resize_images_array(img_dir, folders, bucket):
                 obj = s3.get_object(Bucket=bucket, Key=f'{filepath}')
                 img_bytes = BytesIO(obj['Body'].read())
                 open_img = Image.open(img_bytes)
-                arr = np.array(open_img.resize((200,200))) # resize to 200,200. possible to play around with better or worse resolution
+                arr = np.array(open_img.resize((299,299)))
                 img_arrays.append(arr)
                 labels.append(folder)
             except:
