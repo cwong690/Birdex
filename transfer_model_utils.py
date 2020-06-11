@@ -78,6 +78,7 @@ def class_report(y_true, y_pred, y_score=None, average='micro'):
     lb = LabelBinarizer()
 
     if len(y_true.shape) == 1:
+        print(len(y_true.shape))
         lb.fit(y_true)
 
     #Value counts of predictions
@@ -91,11 +92,13 @@ def class_report(y_true, y_pred, y_score=None, average='micro'):
             y_true=y_true,
             y_pred=y_pred,
             labels=labels)
+    print('metrics summary good')
 
     avg = list(precision_recall_fscore_support(
             y_true=y_true, 
             y_pred=y_pred,
             average='weighted'))
+    print('avg good')
 
     metrics_sum_index = ['precision', 'recall', 'f1-score', 'support']
     class_report_df = pd.DataFrame(
@@ -111,17 +114,19 @@ def class_report(y_true, y_pred, y_score=None, average='micro'):
     class_report_df['pred'] = pred_cnt
     class_report_df['pred'].iloc[-1] = total
 
+    fig, ax = plt.subplots(figsize=(8,6))
+    
     if not (y_score is None):
         fpr = dict()
         tpr = dict()
         roc_auc = dict()
+        
         for label_it, label in enumerate(labels):
             fpr[label], tpr[label], _ = roc_curve(
                 (y_true == label).astype(int), 
                 y_score[:, label_it])
-
             roc_auc[label] = auc(fpr[label], tpr[label])
-
+            
         if average == 'micro':
             if n_classes <= 2:
                 fpr["avg / total"], tpr["avg / total"], _ = roc_curve(

@@ -79,29 +79,58 @@ df['val_loss'] = val_loss
 df.to_csv('data/accuracy.csv')
 print('Accuracy CSV saved.')
 
-pred1 = transfer_model.predict(X_test)
+pred_prob = transfer_model.predict(X_test)
 print('X_test predicted')
-print('Starting ROC Curve Plot')
 
-fpr, tpr, thresholds = roc_curve(y_test, pred1.argmax(axis=1))
-fig, ax = plt.subplots(figsize=(8,6))
-auc_score = metrics.roc_auc_score(y_test, pred1)
-plot_roc_curve(ax, fpr, tpr, auc_score,'Xception ROC Curve')
-plt.savefig('graphs/xception_roc_curve.png')
+pred_arr = []
 
+for i in pred_prob:
+    i[i.argmax()] = 1
+    i[i < 1] = 0
+    print(i)
+    pred_arr.append(i)
+    
+pred_arr = np.array(pred_arr)
+
+print('Starting SKLEARN CLASSIFICATION REPORT')
+sk_report = classification_report(
+    digits=6,
+    y_true=y_test, 
+    y_pred=pred_arr)
+print(sk_report)
+np.save("data/sk_report.npy", sk_report)
+print('sk_report saved.')
+
+print('Begin custom CLASS REPORT')
+report_with_auc = class_report(
+    y_true=y_test, 
+    y_pred=pred_arr)
+print('report variable created')
+print(report_with_auc)
+report_with_auc.to_csv('data/class_report_xception.csv')
+print('report saved.')
 
 print('Starting Confusion Matrix...')
-conf_mat = confusion_matrix(y_test.argmax(axis=1), pred1.argmax(axis=1), labels=np.unique(orders_df['species_group'][:21129])
+conf_mat = confusion_matrix(y_test.argmax(axis=1), pred_arr.argmax(axis=1))
 np.savetxt('data/confusion_matrix.csv', conf_mat)
 
-print('Onto Classification Report...')
-classify = classification_report(y_test.argmax(axis=1), pred1.argmax(axis=1),labels=np.unique(orders_df['species_group'][:21129])
-print('classify variable obtained.')
-np.savetxt('data/class_report.csv', classify)
-
 print('Starting recall score...')
-recall = recall_score(y_test.argmax(axis=1),pred1.argmax(axis=1))
+recall = recall_score(y_test.argmax(axis=1),pred_arr.argmax(axis=1), average='micro')
 print('recall variable obtained.')
-np.savetxt('data/recall_score.csv', recall)
+np.save("data/recall.npy", recall)
+
+print('Onto Classification Report...')
+classify = classification_report(y_test.argmax(axis=1), pred_arr.argmax(axis=1))
+print('classify variable obtained.')
+np.save("data/classify.npy", classify)
+
+# print('Starting ROC Curve Plot')
+
+# fpr, tpr, thresholds = roc_curve(y_test, pred_arr)
+# fig, ax = plt.subplots(figsize=(8,6))
+# auc_score = metrics.roc_auc_score(y_test, pred_arr)
+# plot_roc_curve(ax, fpr, tpr, auc_score,'Xception ROC Curve')
+# plt.savefig('graphs/test_xception_roc_curve.png')
+# print('ROC saved')
 
 print('End.')

@@ -26,17 +26,17 @@ def resize_images_array(img_dir, file_paths):
     return np.array(img_arrays)
 
 # obtain image data in arrays
-X = resize_images_array(img_dir, orders_df['file_path'][21125:21135])
+X = resize_images_array(img_dir, orders_df['file_path'][20000:22000:100])
 
 # normalize RGB values
 X = X/255.0
 
 # grab label
 # INPUT VALUES MUST BE ARRAYS
-label = np.array(orders_df['species_group'][:10].values)
+label = np.array(orders_df['species_group'][20000:22000:100].values)
 
 # labels are alphabetical with np.unique
-y = (label.reshape(-1,1) == np.unique(orders_df['species_group'][21125:21135])).astype(float)
+y = (label.reshape(-1,1) == np.unique(orders_df['species_group'][20000:22000:100])).astype(float)
 
 # number of outputs/labels available and image input size
 n_categories = y.shape[1]
@@ -58,7 +58,7 @@ _ = change_trainable_layers(transfer_model, 132)
 transfer_model.compile(optimizer=RMSprop(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
 # fit model
-history = transfer_model.fit(X_train, y_train, epochs=2, validation_split=0.1)
+history = transfer_model.fit(X_train, y_train, epochs=1, validation_split=0.1)
 
 print('Model created.')
 # load_L_xception = tf.keras.models.load_model('saved_models/large_xception.h5')
@@ -77,51 +77,62 @@ df['val_loss'] = val_loss
 df.to_csv('data/test_accuracy.csv')
 print('Accuracy CSV saved.')
 
-pred1 = transfer_model.predict(X_test)
+pred_prob = transfer_model.predict(X_test)
 print('X_test predicted')
 
-print(y_test, y_test.shape)
-print(pred1, pred1.shape)
-print(pred1.argmax(axis=1), pred1.argmax(axis=1).shape)
+pred_arr = []
+
+for i in pred_prob:
+    i[i.argmax()] = 1
+    i[i < 1] = 0
+    print(i)
+    pred_arr.append(i)
+    
+pred_arr = np.array(pred_arr)
+print(pred_arr, pred_arr.shape)
+
+
+# print('Starting ROC Curve Plot')
+
+# fpr, tpr, thresholds = roc_curve(y_test, pred_arr)
+# fig, ax = plt.subplots(figsize=(8,6))
+# auc_score = metrics.roc_auc_score(y_test, pred_arr)
+# plot_roc_curve(ax, fpr, tpr, auc_score,'Xception ROC Curve')
+# plt.savefig('graphs/test_xception_roc_curve.png')
+# print('ROC saved')
+
 
 print('starting sklearn classification report')
 sk_report = classification_report(
     digits=6,
     y_true=y_test, 
-    y_pred=pred1)
+    y_pred=pred_arr)
 print(sk_report)
-print('sk_report')
+print(type(sk_report))
+np.save("data/sk_report.npy", sk_report)
+print('sk_report saved.')
 
 print('begin custom Class Report')
 report_with_auc = class_report(
     y_true=y_test, 
-    y_pred=pred1.argmax(axis=1))
+    y_pred=pred_arr)
 print('report variable created')
 print(report_with_auc)
-report_with_auc.to_csv('data/class_report_xception.csv')
+report_with_auc.to_csv('data/test_class_report_xception.csv')
 print('report saved.')
 
-# print('Starting ROC Curve Plot')
-
-# fpr, tpr, thresholds = roc_curve(y_test, pred1.argmax(axis=1))
-# fig, ax = plt.subplots(figsize=(8,6))
-# auc_score = metrics.roc_auc_score(y_test, pred1)
-# plot_roc_curve(ax, fpr, tpr, auc_score,'Xception ROC Curve')
-# plt.savefig('graphs/test_xception_roc_curve.png')
-# print('ROC saved')
-
 print('Starting Confusion Matrix...')
-conf_mat = confusion_matrix(y_test.argmax(axis=1), pred1.argmax(axis=1), labels=np.unique(orders_df['species_group'][21125:21135]))
+conf_mat = confusion_matrix(y_test.argmax(axis=1), pred_arr.argmax(axis=1))
 np.savetxt('data/test_confusion_matrix.csv', conf_mat)
 
-print('Onto Classification Report...')
-classify = classification_report(y_test.argmax(axis=1), pred1.argmax(axis=1),labels=np.unique(orders_df['species_group'][21125:21135]))
-print('classify variable obtained.')
-np.savetxt('data/test_class_report.csv', classify)
-
 print('Starting recall score...')
-recall = recall_score(y_test.argmax(axis=1),pred1.argmax(axis=1))
+recall = recall_score(y_test.argmax(axis=1),pred_arr.argmax(axis=1), average='micro')
 print('recall variable obtained.')
-np.savetxt('data/test_recall_score.csv', recall)
+np.save("data/test_recall.npy", recall)
+
+print('Onto Classification Report...')
+classify = classification_report(y_test.argmax(axis=1), pred_arr.argmax(axis=1))
+print('classify variable obtained.')
+np.save("data/test_classify.npy", classify)
 
 print('End.')
