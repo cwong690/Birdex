@@ -94,9 +94,15 @@ The exploratory data analysis began with looking at the number of species in the
 
 As seen in the plot, if the model were to predict the Order of the birds, there would be a huge inbalance in the dataset. Unfortunately, there are simply more birds included within the Passeriformes Order (perching birds, the largest order of birds). For example, the Leptosomiformes Order only contains one type of bird: Cuckoo Rollers!
 
-Family is the next specific group in the taxonomic hierarchy. is predicting birds based on family groups, a count plot for the number of species in each family group is created.
+Family is the next specific group in the taxonomic hierarchy. The model is predicting birds based on family groups so a count plot for the number of species in each family group is created.
 
 <img alt="fam countplot" src='graphs/readme_num_fam_group.png' style='width: 600px;'>
+
+<details>
+    <summary>Family Plot Legend</summary>
+    <img alt="fam plot legend" src='graphs/fam_plot_legend.png'>
+</details>
+
 
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(299,299,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
@@ -150,6 +156,7 @@ After the first awful run, a simple model will be created using 3 types of birds
 <details>
     <summary>CNN Model Confusion Matrix</summary>
     <img alt="CNN Model conf_mat" src='graphs/modelx_7_conf_mat.png'>
+    <br>
     After a few runs, it finally captured the finches!
 </details> 
 
