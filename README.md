@@ -1,6 +1,7 @@
 <img alt="Birds Collage" src='graphs/bird_collage.png' height="600px" width="1000px" align='center'>
 
 # BIRDEX
+##### Web based Flask app to predict the family group of birds from images using transfer learning.
 
 ![badge](https://img.shields.io/badge/last%20modified-june%20%202020-success)
 ![badge](https://img.shields.io/badge/status-in%20progress-yellow)
@@ -17,6 +18,8 @@
 
 ## Overview
 
+
+
 The data was pulled from the [The Cornell Lab of Ornithology](https://www.birds.cornell.edu/home).  
 It is a collection of about 48,000 images and more than 400 species of birds observed in North America. Birds are separated by male, female or juvenile since they look quite different. Text files are also included that contains image file names and their corresponding labels.
 
@@ -30,6 +33,8 @@ Also, they're basically modern dinosaurs.
 
 This Berkeley articles on why birds are dinosaurs (but also shows the skeptical side):
 [Are Birds Really Dinosaurs?](https://ucmp.berkeley.edu/diapsids/avians.html)
+
+
 
 
 ## Data Preparation
@@ -73,7 +78,7 @@ def resize_images_array(img_dir, folders, bucket):
 ```
 </details>
 
-### Birds
+### Birds EDA
 
 The images have 3 different channels for the color which makes up the colors in the main image.
 The shape of the images are **(299,299,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
@@ -85,10 +90,16 @@ Contestant 1: Waterfowl    |  Contestant 2: Grosbeak   |     Contestant 3: Hawk
 ![](graphs/readme_waterfowl.png)| ![](graphs/readme_grosbeak.png) | ![](graphs/hawk1.png)
 
   
-Here are the RGB Channels of the three classes of birds seen in this dataset:
+Here are the RGB Channels of three classes of birds seen in this dataset:
 
 
 <img alt="RGB images" src='graphs/dhf_RGBplot.png' style='width: 600px;'>
+
+The exploratory data analysis began with looking at the number of species in the Order group of the birds.
+
+Since the interest is predicting birds based on family groups, a count plot for the number of species in each family group is created.
+
+<img alt="fam countplot" src='graphs/readme_num_fam_group.png' style='width: 600px;'>
 
 
 ## Convolutional Neural Network
