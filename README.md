@@ -76,11 +76,13 @@ def resize_images_array(img_dir, folders, bucket):
 ### Birds
 
 The images have 3 different channels for the color which makes up the colors in the main image.
-The shape of the images are **(200,200,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
+The shape of the images are **(299,299,3)**, the third one represent the number of channels. For greyscale, it'd be 1.
 
-Contestant 1: Duck         |  Contestant 2: Finch      |     Contestant 3: Hawk
+Let's check out some of the contestant within the data!
+
+Contestant 1: Waterfowl    |  Contestant 2: Grosbeak   |     Contestant 3: Hawk
 :-------------------------:|:-------------------------:|:-------------------------:
-![](graphs/duck1.png)     |   ![](graphs/finch1.png)  |    ![](graphs/hawk1.png)
+![](graphs/waterfowl.png)  | ![](graphs/grosbeaks.png) |    ![](graphs/hawk1.png)
 
   
 Here are the RGB Channels of the three classes of birds seen in this dataset:
@@ -123,8 +125,8 @@ After the first awful run, a simple model will be created using 3 types of birds
 
 <details>
     <summary>CNN Model Confusion Matrix</summary>
-    After a few runs, it finally captured the finches!
     <img alt="CNN Model conf_mat" src='graphs/modelx_7_conf_mat.png'>
+    After a few runs, it finally captured the finches!
 </details> 
 
 ### Transfer Learning using Xception Model
