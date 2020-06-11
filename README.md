@@ -82,7 +82,7 @@ Let's check out some of the contestant within the data!
 
 Contestant 1: Waterfowl    |  Contestant 2: Grosbeak   |     Contestant 3: Hawk
 :-------------------------:|:-------------------------:|:-------------------------:
-![](graphs/readme_waterfowl.png)| ![](graphs/readme_grosbeaks.png) | ![](graphs/hawk1.png)
+![](graphs/readme_waterfowl.png)| ![](graphs/readme_grosbeak.png) | ![](graphs/hawk1.png)
 
   
 Here are the RGB Channels of the three classes of birds seen in this dataset:
