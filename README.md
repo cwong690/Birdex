@@ -106,13 +106,13 @@ This returned some pretty disturbing metrics which is was the turning point for 
 
 <img alt="weak model metrics" src='graphs/model1_bad.png'>
 
-This is what the CNN code looks like generally:
+This is what the CNN layers look like generally:
 <details>
     <summary>CNN Code</summary>
     <img alt="CNN Code" src='graphs/first_conv_code.png'>
 </details>
 
-### CNN Model
+### Simple CNN Model
 
 <details>
     <summary>CNN Model Epochs</summary>
@@ -129,26 +129,27 @@ This is what the CNN code looks like generally:
     <img alt="Modelx 7 conf_mat" src='graphs/modelx_7_conf_mat.png'>
 </details> 
 
-### Transfer Learning Model
+### Transfer Learning using Xception Model
 
 <details>
-    <summary>Model 1 Summary</summary>
-    <img alt="Modelx 1 summary" src='graphs/dhf_model1_overfit_summary.png'>
+    <summary>Model Summary</summary>
+    <img alt="Model Summary" src='graphs/transfer_learning.png'>
 </details>
 
 <details>
-    <summary>Model 1 Epochs</summary>
-    <img alt="Modelx 1 epochs" src='graphs/dhf_model1_overfit.png'>
+    <summary>Model Epochs</summary>
+    <img alt="Model epochs" src='graphs/xception_epoch.png'>
 </details>
 
 <details>
-    <summary>Model 1 Accuracy/Loss Plots</summary>
-    <img alt="Modelx 1 acc/loss plots" src='graphs/modelx1_acc_loss_overfit.png'>
+    <summary>Model Accuracy/Loss Plots</summary>
+    <img alt="Model acc plots" src='graphs/readme_xception_acc.png'>
+    <img alt="Model loss plots" src='graphs/readme_xception_loss.png'>
 </details>
 
 <details>
-    <summary>Model 1 Confusion Matrix</summary>
-    <img alt="Modelx 1 conf_mat" src='graphs/modelx_1_conf_mat.png'>
+    <summary>Model Confusion Matrix</summary>
+    <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
 </details>
 
 ## Issues Notes
@@ -165,10 +166,8 @@ This is what the CNN code looks like generally:
 
 ## Future Work
 
-- [ ] KNN
-- [ ] More birds
-- [ ] Better Model
-- [ ] TensorBoard
-- [ ] Transfer Learning
-- [ ] SHAP
+- [x] Better Model
+- [x] Transfer Learning
+- [ ] SHAP/LIME
 - [ ] Clean up files
+- [ ] Object Detection
