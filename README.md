@@ -72,10 +72,6 @@ def resize_images_array(img_dir, folders, bucket):
 
 ```
 </details>
-    
-After loading in all the images, we get:
-
-<img alt="bird numbers" src='graphs/nums_of_birds.png'>
 
 ### Birds
 
@@ -95,15 +91,14 @@ Here are the RGB Channels of the three classes of birds seen in this dataset:
 
 ## Convolutional Neural Network
 
-The one of the first models tested was on a small subset (~3,000) of the total images(~40,000). This is mainly to test that the inputs of features and labels are correct. Errors did occur the very first run.
+This first model was trained on a small subset (~3,000) of the total images(~40,000). This is mainly to test that the inputs of features and labels are correct. Errors did occur the very first run.
 
 <details>
     <summary>Shape of training sets and testing sets.</summary>
     <img alt="data shapes" src='graphs/data_shapes.png'>
-</details>   
-    
-This returned some pretty disturbing metrics which is was the turning point for the project goal.
+</details>
 
+The model is pretty weak.
 <img alt="weak model metrics" src='graphs/model1_bad.png'>
 
 This is what the CNN layers look like generally:
@@ -112,21 +107,24 @@ This is what the CNN layers look like generally:
     <img alt="CNN Code" src='graphs/first_conv_code.png'>
 </details>
 
+After the first awful run, a simple model will be created using 3 types of birds: ducks, finches and hawks. This is to see if the amount of classes was causing the model to do so poorly. It will later be expanded to more.
+
 ### Simple CNN Model
 
 <details>
     <summary>CNN Model Epochs</summary>
-    <img alt="Modelx 7 epochs" src='graphs/modelx7_epochs.png'>
+    <img alt="CNN Model epochs" src='graphs/modelx7_epochs.png'>
 </details>
 
 <details>
     <summary>CNN Model Accuracy/Loss Plots</summary>
-    <img alt="Modelx 7 acc/loss plots" src='graphs/modelx7_acc_loss_overfit.png'>
+    <img alt="CNN Model acc/loss plots" src='graphs/modelx7_acc_loss_overfit.png'>
 </details>
 
 <details>
     <summary>CNN Model Confusion Matrix</summary>
-    <img alt="Modelx 7 conf_mat" src='graphs/modelx_7_conf_mat.png'>
+    After a few runs, it finally captured the finches!
+    <img alt="CNN Model conf_mat" src='graphs/modelx_7_conf_mat.png'>
 </details> 
 
 ### Transfer Learning using Xception Model
