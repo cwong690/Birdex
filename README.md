@@ -240,14 +240,14 @@ Bird Flask gif
     <summary>Test a person in a bird costume</summary>
     <img alt="hawk costume" src='graphs/hawk_costume.gif'>
     <br>
-    As you can see here, that is NOT a bird. However, given it is supposed to be a person in a hawk costume, the model is not too far off!
+    <i>As you can see here, that is NOT a bird. However, given it is supposed to be a person in a hawk costume, the model is not too far off!</i>
 </details>
 
 <details>
     <summary>Test a non-bird: CAT</summary>
     <img alt="Model conf_mat" src='graphs/booboo.gif'>
     <br>
-    The model was not built to predict a label that is not part of the 39 family groups. Thus, it predicts a type of bird that the image relates to the most. The soft white belly and the brown surrounding furs can certainly make the model believe this cat is an owl!
+    <i>The model was not built to predict a label that is not part of the 39 family groups. Thus, it predicts a type of bird that the image relates to the most. The soft white belly and the brown surrounding furs can certainly make the model believe this cat is an owl!</i>
 </details>
 
 ## Future Work
