@@ -13,6 +13,7 @@
     - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
 - [Results](#results)
+- [Improvements](#improvements)
 - [Birdex: Flask App](#birdex-flask-app)
 - [Future Work](#future-work)
 
@@ -185,7 +186,7 @@ After the first awful run, a simple model will be created using 3 types of birds
     <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
 </details>
 
-#### Confusion Matrix
+### Confusion Matrix
 
 There are a few birds the model seem to have predicted poorly on! Let's take a look at some of them and what birds the model tend to confuse them with.
 
@@ -224,11 +225,14 @@ There are a few birds the model seem to have predicted poorly on! Let's take a l
 <p><i>Last but not least, the family groups with the biggest discrepancy. The Cormorants and Anhingas are both tall birds with a long neck. The Nuthatches are pretty much the opposite. There can definitely be more improvement here.  </i></p>
 <br>
 
+## Improvements
+1. One of the encountered issues with this dataset is the inbalance amount of images per famil group. As seen in the bar plot above, the number of species within each family group is not evenly spread. This would cause the model to be able to recognize more of one species and not the other.
+2. Based on the birds that the model is getting confused with, there might be other features of the image the model is predicting on besides the birds themselves. The usage of SHAP or LIME can help determine what features/parts of the images the model is using to predict the family groups of the birds.
+
 ## Birdex: Flask App
 
 Bird Flask gif
 <img alt="bird flask gif" src='graphs/bird_flask4.gif'>
-<!-- <img alt="bird flask img" src='graphs/birdflask.png'> -->
 
 <details>
     <summary>Test a person in a bird costume</summary>
