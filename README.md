@@ -193,11 +193,13 @@ There are a few birds the model seem to have predicted poorly on! Let's take a l
      New World Sparrow     |         Wood-Warbler          |
 :-------------------------:|:-------------------------:|
 ![sparrow](graphs/comp_newworld.png)| ![woodwarb](graphs/comp_woodwarbler.png) |
+<br>
+<p>New World Sparrows and Wood-Warblers seem to have their similarities: small bird, whitish belly, and brown stripes. </p>
 
 <b>2. Kingfishers(35) 24% vs Tits, Chickadees, Titmice(20) 35% </b>
        Kingfisher          |         Titmouse          |          Chickadee
 :-------------------------:|:-------------------------:|:-------------------------:
-![kingfisher](graphs/comp_kingfisher.png)| ![](graphs/comp_titmouse.png) | ![](graphs/comp_chickadee.png)
+![kingfisher](graphs/comp_kingfisher.png)| ![titmouse](graphs/comp_titmouse.png) | ![chickadee](graphs/comp_chickadee.png)
 
 <b>3. Wagtails and Pipits(33) 31% vs Nuthatches(37) 38% </b>
            Pipit           |          Pipit 2          |          Nuthatch
