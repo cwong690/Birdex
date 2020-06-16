@@ -194,7 +194,7 @@ There are a few birds the model seem to have predicted poorly on! Let's take a l
 :-------------------------:|:-------------------------:|
 ![sparrow](graphs/comp_newworld.png)| ![woodwarb](graphs/comp_woodwarbler.png) |
 <br>
-<i>New World Sparrows and Wood-Warblers seem to have their similarities: small bird, whitish belly, and brown stripes. </i>
+<p><i>New World Sparrows and Wood-Warblers seem to have their similarities: small bird, whitish belly, and brown stripes. </i></p>
 <br>
 
 <b>2. Kingfishers(35) 24% vs Tits, Chickadees, Titmice(20) 35% </b>
