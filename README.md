@@ -226,10 +226,12 @@ There are a few birds the model seem to have predicted poorly on! Let's take a l
 <br>
 
 ## Improvements
-1. One of the encountered issues with this dataset is the inbalance amount of images per famil group. As seen in the bar plot above, the number of species within each family group is not evenly spread. This would cause the model to be able to recognize more of one species and not the other.
+1. One of the encountered issues with this dataset is the inbalance amount of images per family group. As seen in the bar plot above, the number of species within each family group is not evenly spread. This would cause the model to be able to recognize more of one species and not the other.
 2. Based on the birds that the model is getting confused with, there might be other features of the image the model is predicting on besides the birds themselves. The usage of SHAP or LIME can help determine what features/parts of the images the model is using to predict the family groups of the birds.
 
 ## Birdex: Flask App
+
+The web app allows users to upload images of birds and receive a prediction on which family group the bird belongs to! Other images were tested to see what it would turn out to be.
 
 Bird Flask gif
 <img alt="bird flask gif" src='graphs/bird_flask4.gif'>
@@ -237,11 +239,15 @@ Bird Flask gif
 <details>
     <summary>Test a person in a bird costume</summary>
     <img alt="hawk costume" src='graphs/hawk_costume.gif'>
+    <br>
+    As you can see here, that is NOT a bird. However, given it is supposed to be a person in a hawk costume, the model is not too far off!
 </details>
 
 <details>
     <summary>Test a non-bird: CAT</summary>
     <img alt="Model conf_mat" src='graphs/booboo.gif'>
+    <br>
+    The model was not built to predict a label that is not part of the 39 family groups. Thus, it predicts a type of bird that the image relates to the most. The soft white belly and the brown surrounding furs can certainly make the model believe this cat is an owl!
 </details>
 
 ## Future Work
