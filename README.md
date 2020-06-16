@@ -12,7 +12,7 @@
 - [Data Preparation](#data-preparation)
     - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
-- [Conclusion](#conclusion)
+- [Results](#results)
 - [Birdex: Flask App](#birdex-flask-app)
 - [Future Work](#future-work)
 
@@ -172,6 +172,8 @@ After the first awful run, a simple model will be created using 3 types of birds
     <img alt="Model epochs" src='graphs/xception_epoch.png'>
 </details>
 
+## Results:
+
 <details>
     <summary>Model Accuracy/Loss Plots</summary>
     <img alt="Model acc plots" src='graphs/readme_xception_acc.png'>
@@ -183,8 +185,29 @@ After the first awful run, a simple model will be created using 3 types of birds
     <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
 </details>
 
-## Conclusion:
+#### Confusion Matrix
 
+There are a few birds the model seem to have predicted poorly on! Let's take a look at some of them and what birds the model tend to confuse them with.
+
+<b>1. New World Sparrows(4) 41% vs Wood-Warblers(2) 15% </b>
+     New World Sparrow     |         Wood-Warbler          |
+:-------------------------:|:-------------------------:|
+![sparrow](graphs/comp_newworld.png)| ![woodwarb](graphs/comp_woodwarbler.png) |
+
+<b>2. Kingfishers(35) 24% vs Tits, Chickadees, Titmice(20) 35% </b>
+       Kingfisher          |         Titmouse          |          Chickadee
+:-------------------------:|:-------------------------:|:-------------------------:
+![kingfisher](graphs/comp_kingfisher.png)| ![](graphs/comp_titmouse.png) | ![](graphs/comp_chickadee.png)
+
+<b>3. Wagtails and Pipits(33) 31% vs Nuthatches(37) 38% </b>
+           Pipit           |          Pipit 2          |          Nuthatch
+:-------------------------:|:-------------------------:|:-------------------------:
+![pipit](graphs/comp_pipit.png)| ![pipit2](graphs/comp2_pipit.png) | ![nuthatch](graphs/comp_nuthatch.png)
+
+<b>4. Cormorants and Anhingas(16) 11% vs Nuthatches(37) 48% </b>
+        Anhingas           |         Nuthatch          |
+:-------------------------:|:-------------------------:|
+![anhinga](graphs/comp_anhinga.png)| ![nuthatch](graphs/comp_nuthatch.png) |
 
 ## Birdex: Flask App
 
