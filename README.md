@@ -202,15 +202,27 @@ There are a few birds the model seem to have predicted poorly on! Let's take a l
 :-------------------------:|:-------------------------:|:-------------------------:
 ![kingfisher](graphs/comp_kingfisher.png)| ![titmouse](graphs/comp_titmouse.png) | ![chickadee](graphs/comp_chickadee.png)
 
+<br>
+<p><i>The model is confusing quite a bit of Kingfishers to the other group. Kingfisher and Titmouse do resemble each other in a way (spiked up mohawk). However, not too much from the allies of Titmouse, the Chickadee. THe color pattern do have SOME resemblance. </i></p>
+<br>
+
 <b>3. Wagtails and Pipits(33) 31% vs Nuthatches(37) 38% </b>
            Pipit           |          Pipit 2          |          Nuthatch
 :-------------------------:|:-------------------------:|:-------------------------:
 ![pipit](graphs/comp_pipit.png)| ![pipit2](graphs/comp2_pipit.png) | ![nuthatch](graphs/comp_nuthatch.png)
 
+<br>
+<p><i>The model is a bit confused here as well, labeling Wagtails and Pipits as more Nuthatches than the actual birds. Pipits and Nuthatches look quite different in the first image. Pipits are longer and have a tinier head. However, there are some images of Pipits that could resemble a nuthatch more. The setting of the birds are also similarly colored.</i></p>
+<br>
+
 <b>4. Cormorants and Anhingas(16) 11% vs Nuthatches(37) 48% </b>
         Anhingas           |         Nuthatch          |
 :-------------------------:|:-------------------------:|
 ![anhinga](graphs/comp_anhinga.png)| ![nuthatch](graphs/comp_nuthatch.png) |
+
+<br>
+<p><i>Last but not least, the family groups with the biggest discrepancy. The Cormorants and Anhingas are both tall birds with a long neck. The Nuthatches are pretty much the opposite. There can definitely be more improvement here.  </i></p>
+<br>
 
 ## Birdex: Flask App
 
