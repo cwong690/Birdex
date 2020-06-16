@@ -12,8 +12,8 @@
 - [Data Preparation](#data-preparation)
     - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
+- [Conclusion](#conclusion)
 - [Birdex: Flask App](#birdex-flask-app)
-- [Summary](#summary)
 - [Future Work](#future-work)
 
 ## Overview
@@ -182,6 +182,9 @@ After the first awful run, a simple model will be created using 3 types of birds
     <summary>Model Confusion Matrix</summary>
     <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
 </details>
+
+## Conclusion:
+
 
 ## Birdex: Flask App
 
