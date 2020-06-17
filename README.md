@@ -181,6 +181,22 @@ After the first awful run, a simple model will be created using 3 types of birds
     <img alt="Model loss plots" src='graphs/readme_xception_loss.png'>
 </details>
 
+<p>The model is able to reach about 80% accuracy! However, accuracy can be misleading when there is an imbalance of the label groups. In this case, there is some imbalance classes because some family groups did not contain as many images as another.<br> Therefore, precision, recall, and F1-score is calculated as better metrics.</p>
+
+<img alt="model metrics" src='graphs/model_precision_recall.png'>
+<br>
+<p><i> <b>Precision: </b> number of correct positives / total number of positives predicted, TP/(TP+FP) </i></p>
+<br>
+<p><i> <b>Recall: </b> number of correct positives / total number of positives actual, TP/(TP+FN)</i></p>
+<br>
+<p><i> <b>F1-Score: </b> harmonic mean of precision and recall, 2 * (precision*recall)/(precision + recall) </i></p>
+
+<details>
+    <summary>Precision, Recall, F1-Score per Family</summary>
+    <img alt="per group metrics" src='graphs/metrics_per_group.png'>
+    The precision, recall and F1-score per family group
+</details>
+
 <details>
     <summary>Model Confusion Matrix</summary>
     <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
