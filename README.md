@@ -250,6 +250,8 @@ There are a few birds the model seem to have predicted poorly on! Let's take a l
 
 The web app allows users to upload images of birds and receive a prediction on which family group the bird belongs to! Other images were tested to see what it would turn out to be.
 
+<i>Note on the design: You may have noticed an image of a duck with oddly bright blue colored background on the page. I used the little fellow as a test image and got attached to them. This duck was with me through all my trouble shooting and successes, so they earned their place on my app!</i>
+
 Bird Flask gif
 <img alt="bird flask gif" src='graphs/bird_flask4.gif'>
 
