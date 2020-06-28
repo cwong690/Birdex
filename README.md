@@ -12,8 +12,9 @@
 - [Data Preparation](#data-preparation)
     - [Birds](#birds)
 - [Convolutional Neural Network](#convolutional-neural-network)
+- [Results](#results)
+- [Improvements](#improvements)
 - [Birdex: Flask App](#birdex-flask-app)
-- [Summary](#summary)
 - [Future Work](#future-work)
 
 ## Overview
@@ -172,31 +173,100 @@ After the first awful run, a simple model will be created using 3 types of birds
     <img alt="Model epochs" src='graphs/xception_epoch.png'>
 </details>
 
+## Results:
+
 <details>
     <summary>Model Accuracy/Loss Plots</summary>
     <img alt="Model acc plots" src='graphs/readme_xception_acc.png'>
     <img alt="Model loss plots" src='graphs/readme_xception_loss.png'>
 </details>
 
+<p>The model is able to reach about 80% accuracy! However, accuracy can be misleading when there is an imbalance of the label groups. In this case, there is some imbalance classes because some family groups did not contain as many images as another.</p>
+<br>
+<p>Therefore, precision, recall, and F1-score is calculated as better metrics.</p>
+
+<img alt="model metrics" src='graphs/model_precision_recall.png'>
+<br>
+<p><i> <b>Precision: </b> number of correct positives / total number of positives predicted, TP/(TP+FP) </i></p>
+<p><i> <b>Recall: </b> number of correct positives / total number of positives actual, TP/(TP+FN)</i></p>
+<p><i> <b>F1-Score: </b> harmonic mean of precision and recall, 2 * (precision*recall)/(precision + recall) </i></p>
+<br>
+
+<details>
+    <summary>Precision, Recall, F1-Score per Family</summary>
+    <img alt="per group metrics" src='graphs/metrics_per_group.png'>
+    The precision, recall and F1-score per family group
+</details>
+
+### Confusion Matrix
+
 <details>
     <summary>Model Confusion Matrix</summary>
     <img alt="Model conf_mat" src='graphs/readme_confusion_mat.png'>
 </details>
 
+There are a few birds the model seem to have predicted poorly on! Let's take a look at some of them and what birds the model tend to confuse them with.
+
+<b>1. New World Sparrows(4) 41% vs Wood-Warblers(2) 15% </b>
+     New World Sparrow     |         Wood-Warbler          |
+:-------------------------:|:-------------------------:|
+![sparrow](graphs/comp_newworld.png)| ![woodwarb](graphs/comp_woodwarbler.png) |
+<br>
+<p><i>New World Sparrows and Wood-Warblers seem to have their similarities: small bird, whitish belly, and brown stripes. </i></p>
+<br>
+
+<b>2. Kingfishers(35) 24% vs Tits, Chickadees, Titmice(20) 35% </b>
+       Kingfisher          |         Titmouse          |          Chickadee
+:-------------------------:|:-------------------------:|:-------------------------:
+![kingfisher](graphs/comp_kingfisher.png)| ![titmouse](graphs/comp_titmouse.png) | ![chickadee](graphs/comp_chickadee.png)
+
+<br>
+<p><i>The model is confusing quite a bit of Kingfishers to the other group. Kingfisher and Titmouse do resemble each other in a way (spiked up mohawk). However, not too much from the allies of Titmouse, the Chickadee. THe color pattern do have SOME resemblance. </i></p>
+<br>
+
+<b>3. Wagtails and Pipits(33) 31% vs Nuthatches(37) 38% </b>
+           Pipit           |          Pipit 2          |          Nuthatch
+:-------------------------:|:-------------------------:|:-------------------------:
+![pipit](graphs/comp_pipit.png)| ![pipit2](graphs/comp2_pipit.png) | ![nuthatch](graphs/comp_nuthatch.png)
+
+<br>
+<p><i>The model is a bit confused here as well, labeling Wagtails and Pipits as more Nuthatches than the actual birds. Pipits and Nuthatches look quite different in the first image. Pipits are longer and have a tinier head. However, there are some images of Pipits that could resemble a nuthatch more. The setting of the birds are also similarly colored.</i></p>
+<br>
+
+<b>4. Cormorants and Anhingas(16) 11% vs Nuthatches(37) 48% </b>
+        Anhingas           |         Nuthatch          |
+:-------------------------:|:-------------------------:|
+![anhinga](graphs/comp_anhinga.png)| ![nuthatch](graphs/comp_nuthatch.png) |
+
+<br>
+<p><i>Last but not least, the family groups with the biggest discrepancy. The Cormorants and Anhingas are both tall birds with a long neck. The Nuthatches are pretty much the opposite. There can definitely be more improvement here.  </i></p>
+<br>
+
+## Improvements
+1. One of the encountered issues with this dataset is the inbalance amount of images per family group. As seen in the bar plot above, the number of species within each family group is not evenly spread. This would cause the model to be able to recognize more of one species and not the other.
+2. Based on the birds that the model is getting confused with, there might be other features of the image the model is predicting on besides the birds themselves. The usage of SHAP or LIME can help determine what features/parts of the images the model is using to predict the family groups of the birds.
+
 ## Birdex: Flask App
+
+The web app allows users to upload images of birds and receive a prediction on which family group the bird belongs to! Other images were tested to see what it would turn out to be.
+
+<i>Note on the design: You may have noticed an image of a duck with oddly bright blue colored background on the page. I used the little fellow as a test image and got attached to them. This duck was with me through all my trouble shooting and successes, so they earned their place on my app!</i>
 
 Bird Flask gif
 <img alt="bird flask gif" src='graphs/bird_flask4.gif'>
-<!-- <img alt="bird flask img" src='graphs/birdflask.png'> -->
 
 <details>
     <summary>Test a person in a bird costume</summary>
     <img alt="hawk costume" src='graphs/hawk_costume.gif'>
+    <br>
+    <i>As you can see here, that is NOT a bird. However, given it is supposed to be a person in a hawk costume, the model is not too far off!</i>
 </details>
 
 <details>
     <summary>Test a non-bird: CAT</summary>
     <img alt="Model conf_mat" src='graphs/booboo.gif'>
+    <br>
+    <i>The model was not built to predict a label that is not part of the 39 family groups. Thus, it predicts a type of bird that the image relates to the most. The soft white belly and the brown surrounding furs can certainly make the model believe this cat is an owl!</i>
 </details>
 
 ## Future Work
