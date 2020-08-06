@@ -274,5 +274,5 @@ Bird Flask gif
 - [x] Better Model
 - [x] Transfer Learning
 - [ ] SHAP/LIME
-- [ ] Clean up files
+- [x] Clean up files
 - [ ] Object Detection
